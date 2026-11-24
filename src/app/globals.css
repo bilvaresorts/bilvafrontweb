@@ -1,0 +1,250 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens (PRD section 18).
+ * One typeface, black, off-white and grey. Change a value here and it
+ * changes everywhere.
+ */
+@theme {
+  --color-ink: #0d0d0d;
+  --color-paper: #f3f3f3;
+  --color-mist: #eeeeee;
+  --color-line: #ededed;
+  --color-rule: #d4d4d4;
+  --color-stone: #6c6c6c;
+  --color-graphite: #373737;
+  --color-coal: #1a1a1a;
+  --color-whatsapp: #25d366;
+  --color-danger: #b42318;
+  --color-danger-soft: #ff9d94;
+
+  --tracking-eyebrow: 0.3em;
+  --tracking-button: 0.12em;
+  --tracking-display: 0.025em;
+  --tracking-nav: 0.14em;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/*
+ * Smooth scrolling is for in-page links only. The root layout sets
+ * data-scroll-behavior="smooth" on <html>, which tells Next.js to switch it off
+ * while it moves to a new page, so every page opens at its top.
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+ * In-page links stop below the fixed header. The offset sits on the targets,
+ * not as scroll padding on the page: with padding, Next.js judges the top of a
+ * new page to be out of view and scrolls into the page after every navigation.
+ */
+section[id],
+main[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* A line under a menu link while its page loads. Delayed, so instant navigations never show it. */
+@keyframes nav-pending {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scaleX(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+.nav-pending {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -4px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.nav-pending.is-pending {
+  animation: nav-pending 1.1s var(--ease-out-soft) 150ms infinite;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/*
+ * Hero image settles in on load. It starts partly visible, never hidden, so
+ * the largest element on the page paints straight away.
+ */
+@keyframes hero-in {
+  from {
+    opacity: 0.55;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-media {
+  animation: hero-in 1.6s var(--ease-out-soft) both;
+}
+
+/* The villa name settles in when the Nakshatram changes. */
+@keyframes plate-in {
+  from {
+    opacity: 0.2;
+    transform: translateY(6px);
+  }
+}
+
+.plate-in {
+  animation: plate-in 0.3s var(--ease-out-soft);
+}
+
+/* Range inputs, styled to match the monochrome system. */
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: var(--color-rule);
+  cursor: pointer;
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--color-ink);
+  border: 3px solid var(--color-paper);
+  box-shadow: 0 0 0 1px var(--color-ink);
+}
+.range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--color-ink);
+  border: 3px solid var(--color-paper);
+  box-shadow: 0 0 0 1px var(--color-ink);
+}
+
+/* FAQ disclosure marker. */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Hero copy rises into place on load, one line after another. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+.rise {
+  animation: rise-in 1s var(--ease-out-soft) both;
+  animation-delay: calc(var(--i, 0) * 110ms + 150ms);
+}
+
+/* Custom dropdown panel. */
+@keyframes select-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.select-panel {
+  animation: select-in 0.2s var(--ease-out-soft);
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #8a8a8a transparent;
+}
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #8a8a8a;
+  border-radius: 9999px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* The site marker on the illustrated map. */
+@keyframes map-pulse {
+  from {
+    transform: scale(0.6);
+    opacity: 0.55;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.map-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: map-pulse 2.4s ease-out infinite;
+}
+
+/* Lightbox image settles in. */
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+.lightbox-in {
+  animation: lightbox-in 0.35s var(--ease-out-soft);
+}
