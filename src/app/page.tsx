@@ -1,15 +1,5 @@
-import {
-  Faq,
-  FinalEnquiry,
-  GalleryPreview,
-  HotelPreview,
-  Identity,
-  Journey,
-  LocationPreview,
-  RentalIncome,
-  WhyGokarna,
-} from "@/components/home/bottom";
-import { EnquiryBand, Hero, InsideVilla, Introduction, VillaOffer } from "@/components/home/top";
+import { Faq, FinalEnquiry, GalleryPreview, Identity, LocationPreview, RentalIncome } from "@/components/home/bottom";
+import { Hero, InsideVilla, Offers, VillaOffer } from "@/components/home/top";
 import { faqs } from "@/lib/content";
 import { geo, mapsUrl, site } from "@/lib/site";
 
@@ -50,15 +40,11 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
       <Hero />
-      <Introduction />
+      <Offers />
       <VillaOffer />
-      <EnquiryBand />
       <InsideVilla />
       <Identity />
-      <Journey />
       <RentalIncome />
-      <WhyGokarna />
-      <HotelPreview />
       <LocationPreview />
       <GalleryPreview />
       <Faq />

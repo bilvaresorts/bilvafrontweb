@@ -34,10 +34,10 @@ export function Footer() {
           <div>
             <Link href="/" aria-label="Bilva Resorts, home" className="inline-block rounded-[4px] bg-white p-3">
               <Image
-                src="/brand/logo-color.png"
+                src="/brand/leaf.png"
                 alt="Bilva Resorts"
-                width={614}
-                height={872}
+                width={454}
+                height={640}
                 sizes="96px"
                 className="h-28 w-auto"
               />

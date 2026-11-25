@@ -3,15 +3,15 @@ import { faqs, nearbyPlaces } from "@/lib/content";
 import { galleryHighlights } from "@/lib/gallery";
 import { ILLUSTRATIVE, ref } from "@/lib/images";
 import { site } from "@/lib/site";
-import { EnquirySection, FaqList, JourneySteps, ThemeList } from "../blocks";
+import { EnquirySection, FaqList } from "../blocks";
 import { LocationMap } from "../LocationMap";
 import { NameplatePreview } from "../NameplatePreview";
-import { IMPRESSION, Photo } from "../Photo";
+import { Photo } from "../Photo";
 import { RentalPreview } from "../RentalPreview";
 import { Reveal, Stagger, StaggerItem } from "../Reveal";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Heading, Section } from "../ui";
 
-/* 6. Your Villa. Your Identity. */
+/* 5. Your Villa. Your Identity. */
 export function Identity() {
   return (
     <Section tone="ink" labelledBy="identity-title">
@@ -24,7 +24,7 @@ export function Identity() {
               Your villa is more than a property. It is your personal sanctuary. Make it uniquely yours with a
               name inspired by your Nakshatram.
             </p>
-            <ArrowLink href="/villas/personalise" onDark className="mt-8">
+            <ArrowLink href="/villas#naming" onDark className="mt-8">
               How villa naming works
             </ArrowLink>
           </Reveal>
@@ -37,27 +37,7 @@ export function Identity() {
   );
 }
 
-/* 7. Own, enjoy, earn */
-export function Journey() {
-  return (
-    <Section tone="mist" labelledBy="journey-title">
-      <Container>
-        <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <Eyebrow>How it works</Eyebrow>
-            <Heading id="journey-title" light="Own your villa." bold="Earn from your investment." className="mt-4" />
-          </div>
-          <ArrowLink href="/investment/rental-income">About the rental programme</ArrowLink>
-        </Reveal>
-        <div className="mt-12 md:mt-16">
-          <JourneySteps />
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-/* 8. Rental income calculator preview */
+/* 6. Rental income calculator preview */
 export function RentalIncome() {
   return (
     <Section tone="paper" labelledBy="rental-title">
@@ -73,7 +53,7 @@ export function RentalIncome() {
             <p className="mt-4 max-w-md text-sm leading-6 text-stone">
               Renting is optional. Each owner decides whether and when to make their villa available.
             </p>
-            <ArrowLink href="/investment/calculator" className="mt-8">
+            <ArrowLink href="/investment#calculator" className="mt-8">
               Open the full calculator
             </ArrowLink>
           </Reveal>
@@ -86,97 +66,42 @@ export function RentalIncome() {
   );
 }
 
-/* 9. Why Gokarna */
-export function WhyGokarna() {
-  return (
-    <Section tone="ink" labelledBy="gokarna-title">
-      <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <Reveal from="left">
-            <Eyebrow onDark>Why Gokarna</Eyebrow>
-            <Heading id="gokarna-title" light="A destination" bold="for every age." className="mt-4" />
-            <p className="mt-7 max-w-md text-base leading-7 text-paper/75">
-              A unique haven blending spirituality with beach lifestyle. Gokarna gives each generation its own
-              reason to come back.
-            </p>
-            <ArrowLink href="/location" onDark className="mt-8">
-              Explore the location
-            </ArrowLink>
-          </Reveal>
-          <ThemeList />
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-/* 10. Hotel preview */
-export function HotelPreview() {
-  return (
-    <Section tone="mist" labelledBy="hotel-title">
-      <Container>
-        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16 lg:gap-24">
-          <Link href="/hotel" className="group block" aria-label="The hotel at Bilva Resorts">
-            <Photo
-              src="/images/hotel-pool.jpg"
-              alt="Three-storey hotel with arched ground floor and balconies behind an infinity pool"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="aspect-[4/3] w-full"
-              tag="Under construction"
-              note={IMPRESSION}
-            />
-          </Link>
-          <Stagger gap={0.12}>
-            <StaggerItem>
-              <Eyebrow>The hotel</Eyebrow>
-              <Heading id="hotel-title" light="A hotel within" bold="the resort." className="mt-4" />
-            </StaggerItem>
-            <StaggerItem>
-              <p className="mt-7 max-w-md text-base leading-7 text-graphite">
-                A hotel is under construction as part of Bilva Resorts. Register your interest and we will
-                contact you when reservations open.
-              </p>
-            </StaggerItem>
-            <StaggerItem className="mt-9">
-              <ButtonLink href="/hotel" variant="solid-dark" arrow>
-                Register interest
-              </ButtonLink>
-            </StaggerItem>
-          </Stagger>
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-/* 11. Location */
+/* 7. Location highlights */
 export function LocationPreview() {
   const { address } = site;
   return (
-    <Section tone="paper" labelledBy="location-title">
+    <Section tone="mist" labelledBy="location-title">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal from="left">
-            <Eyebrow>Location</Eyebrow>
+            <Eyebrow>Location highlights</Eyebrow>
             <Heading id="location-title" light="Between two rivers" bold="and the Arabian Sea." className="mt-4" />
             <p className="mt-7 max-w-md text-base leading-7 text-graphite">
               Gokarna sits on the Arabian Sea coast of Karnataka, between the Gangavali and Aghanashini
-              rivers.
+              rivers. The temple town, the beaches and the highway are all a short drive from the resort.
             </p>
             <address className="mt-6 text-sm not-italic leading-6 text-stone">
               {address.line1}, {address.line2}, {address.region} {address.postalCode}
             </address>
-            <h3 className="mt-10 text-[11px] font-semibold uppercase tracking-eyebrow text-stone">Nearby</h3>
+            <h3 className="mt-10 text-[11px] font-semibold uppercase tracking-eyebrow text-stone">
+              From the resort, by road
+            </h3>
             <Stagger as="ul" className="mt-4 grid gap-x-8 border-t border-rule text-sm sm:grid-cols-2" gap={0.06}>
               {nearbyPlaces.map((place) => (
-                <StaggerItem as="li" key={place} className="border-b border-rule py-3">
-                  {place}
+                <StaggerItem
+                  as="li"
+                  key={place.name}
+                  className="flex items-baseline justify-between gap-4 border-b border-rule py-3"
+                >
+                  <span>{place.name}</span>
+                  <span className="shrink-0 font-semibold tabular-nums">{place.distance}</span>
                 </StaggerItem>
               ))}
             </Stagger>
-            <div className="mt-9">
+            <p className="mt-3 text-[11px] leading-5 text-stone">Approximate road distances.</p>
+            <div className="mt-8">
               <ButtonLink href="/location" variant="outline-dark" arrow>
-                Explore the location
+                All location highlights
               </ButtonLink>
             </div>
           </Reveal>
@@ -189,10 +114,10 @@ export function LocationPreview() {
   );
 }
 
-/* 12. Gallery */
+/* 8. Gallery */
 export function GalleryPreview() {
   return (
-    <Section tone="mist" labelledBy="gallery-title">
+    <Section tone="paper" labelledBy="gallery-title">
       <Container>
         <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
@@ -222,10 +147,10 @@ export function GalleryPreview() {
   );
 }
 
-/* 14. FAQ (13, Testimonials, has its own page; see src/lib/testimonials.ts) */
+/* 9. FAQ */
 export function Faq() {
   return (
-    <Section tone="paper" labelledBy="faq-title">
+    <Section tone="mist" labelledBy="faq-title">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <Reveal from="left">
@@ -242,7 +167,7 @@ export function Faq() {
   );
 }
 
-/* 15. Final enquiry */
+/* 10. Final enquiry */
 export function FinalEnquiry() {
   return (
     <EnquirySection

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
-import { inclusions, journey, price, themes } from "@/lib/content";
+import { inclusions, price } from "@/lib/content";
 import type { EnquiryTypeId } from "@/lib/enquiry";
 import { EnquiryForm, type ExtraField } from "./EnquiryForm";
 import { IMPRESSION, Photo } from "./Photo";
@@ -306,10 +306,6 @@ export function StepRow({
   );
 }
 
-export function JourneySteps() {
-  return <StepRow steps={journey} />;
-}
-
 /** A two-column numbered list, each row arriving in turn. */
 export function NumberedList({
   items,
@@ -339,10 +335,6 @@ export function NumberedList({
       ))}
     </Stagger>
   );
-}
-
-export function ThemeList() {
-  return <NumberedList items={themes} onDark />;
 }
 
 /* ------------------------------------------------------------------ */

@@ -43,7 +43,7 @@ export default function GalleryPage() {
         text="We will share the price list and arrange a visit, so you can see the site for yourself."
         image={{ src: ref.bandRooftop.src }}
         primary={{ label: "Get the price list", type: "villa", message: "Please send me the price list and payment schedule." }}
-        secondary={{ label: "Tour the model villa", href: "/villas/model-villa" }}
+        secondary={{ label: "See inside the villa", href: "/villas#rooms" }}
       />
     </>
   );

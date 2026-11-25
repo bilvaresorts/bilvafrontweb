@@ -179,10 +179,10 @@ export default function TestimonialsPage() {
                 <span className="block font-bold">for yourself.</span>
               </h2>
               <p className="mt-6 max-w-md text-base leading-7 text-graphite">
-                The best review is your own. Walk the site, see the model villa and ask our team anything.
+                The best review is your own. Walk the site, see the villa and ask our team anything.
               </p>
-              <ArrowLink href="/villas/model-villa" className="mt-6">
-                Tour the model villa
+              <ArrowLink href="/villas#rooms" className="mt-6">
+                See inside the villa
               </ArrowLink>
             </Reveal>
             <Reveal from="right" delay={0.1}>

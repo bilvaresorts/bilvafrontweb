@@ -1,21 +1,23 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import { heroFacts, price, villaSpaces } from "@/lib/content";
 import { ILLUSTRATIVE, ref } from "@/lib/images";
 import { VillaCard } from "../blocks";
-import { EnquiryForm } from "../EnquiryForm";
-import { Photo } from "../Photo";
+import { IMPRESSION, Photo } from "../Photo";
 import { Placeholder } from "../Placeholder";
 import { ParallaxLayer, Reveal, Stagger, StaggerItem } from "../Reveal";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Heading, Section } from "../ui";
-import { WhatsAppButton } from "../WhatsApp";
 
 const step = (index: number) => ({ "--i": index }) as CSSProperties;
 
 /*
+ * The page leads with the three things a visitor can do: buy a villa, stay at
+ * the hotel, or rent a villa. Everything after that supports those three.
+ *
  * Image policy on this page: Bilva's own images appear in three places only:
  * the Villas for sale card, the nameplate beside the Nakshatram dropdown, and
- * the Hotel section. Every other image is a reference image from
+ * the hotel offer. Every other image is a reference image from
  * balitecture.com (see src/lib/images.ts) and is labelled "Illustrative image".
  */
 
@@ -60,10 +62,10 @@ export function Hero() {
         </p>
         <div className="rise mt-8 flex flex-wrap gap-3" style={step(4)}>
           <ButtonLink href="/villas" variant="solid-light">
-            Explore the villas
+            Buy a villa
           </ButtonLink>
-          <ButtonLink href="#enquire" variant="outline-light">
-            Enquire now
+          <ButtonLink href="/booking" variant="outline-light">
+            Rent a villa
           </ButtonLink>
         </div>
         <p className="mt-8 text-[9px] uppercase tracking-eyebrow text-paper/45 md:absolute md:bottom-5 md:right-10 md:mt-0">
@@ -94,55 +96,79 @@ export function Hero() {
   );
 }
 
-/* 2. Introduction */
-export function Introduction() {
+/* 2. The three offers: buy a villa, the hotel, rent a villa */
+const offers = [
+  {
+    number: "01",
+    title: "Buy a villa",
+    text: "A two-bedroom villa with its own pool, sold to you outright. From ₹1.36 Cr, plus taxes and charges.",
+    href: "/villas",
+    cta: "See the villas",
+    image: { src: ref.exterior.src, alt: ref.exterior.alt },
+    note: ILLUSTRATIVE,
+    tag: "For sale",
+  },
+  {
+    number: "02",
+    title: "The hotel",
+    text: "A hotel is being built within the resort. Register your interest and we will contact you when reservations open.",
+    href: "/hotel",
+    cta: "See the hotel",
+    image: {
+      src: "/images/hotel-pool.jpg",
+      alt: "Three-storey hotel with arched ground floor and balconies behind an infinity pool",
+    },
+    note: IMPRESSION,
+    tag: "Under construction",
+  },
+  {
+    number: "03",
+    title: "Rent a villa",
+    text: "Stay in a private pool villa without buying one. Stays are not open yet. Send your dates and we will contact you.",
+    href: "/booking",
+    cta: "Request a stay",
+    image: { src: ref.outdoorLounge.src, alt: ref.outdoorLounge.alt },
+    note: ILLUSTRATIVE,
+    tag: "Opening soon",
+  },
+];
+
+export function Offers() {
   return (
-    <Section tone="paper" labelledBy="intro-title">
+    <Section tone="paper" id="offers" labelledBy="offers-title">
       <Container>
-        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16 lg:gap-24">
-          <div className="group">
-            <Photo
-              src={ref.intro.src}
-              alt={ref.intro.alt}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="aspect-[4/3] w-full"
-              note={ILLUSTRATIVE}
-            />
-          </div>
-          <Stagger gap={0.12}>
-            <StaggerItem>
-              <Eyebrow>About Bilva Resorts</Eyebrow>
-              <Heading id="intro-title" light="Invest in memories," bold="not just bricks." className="mt-4" />
+        <Reveal>
+          <Eyebrow>Bilva Resorts, Gokarna</Eyebrow>
+          <Heading id="offers-title" light="Three ways" bold="to be here." className="mt-4" />
+          <p className="mt-6 max-w-xl text-base leading-7 text-graphite">
+            Own a private pool villa, stay at the hotel, or rent a villa for a holiday.
+          </p>
+        </Reveal>
+        <Stagger className="mt-10 grid gap-10 md:mt-14 md:grid-cols-3 md:gap-6" gap={0.16}>
+          {offers.map((offer) => (
+            <StaggerItem key={offer.title}>
+              <Link href={offer.href} className="group block">
+                <Photo
+                  src={offer.image.src}
+                  alt={offer.image.alt}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="aspect-[4/5] w-full"
+                  tag={offer.tag}
+                  note={offer.note}
+                />
+                <p className="mt-6 text-[11px] tabular-nums text-stone">{offer.number}</p>
+                <h3 className="mt-2 text-[26px] font-bold uppercase leading-8 tracking-display">{offer.title}</h3>
+                <p className="mt-3 max-w-sm text-sm leading-6 text-graphite">{offer.text}</p>
+                <span className="mt-5 inline-flex min-h-11 items-center gap-2 text-xs font-semibold uppercase tracking-button">
+                  {offer.cta}
+                  <span aria-hidden className="transition-transform duration-300 ease-out-soft group-hover:translate-x-1">
+                    &rarr;
+                  </span>
+                </span>
+              </Link>
             </StaggerItem>
-            <div className="mt-7 max-w-xl space-y-4 text-base leading-7 text-graphite">
-              <StaggerItem>
-                <p>
-                  Bilva Resorts is a development of about 40 private villas in Gokarna, on the Karnataka
-                  coast. Every villa has two bedrooms, its own swimming pool and 2,000 sq ft of built-up space
-                  on its own plot.
-                </p>
-              </StaggerItem>
-              <StaggerItem>
-                <p>
-                  The resort plan includes a common pool, restaurant, banquet hall, spa, game zone and coffee
-                  shop, and a hotel is under construction as part of the same development.
-                </p>
-              </StaggerItem>
-              <StaggerItem>
-                <p>
-                  You own your villa, give it a name of your own, and decide whether it earns when you are
-                  away.
-                </p>
-              </StaggerItem>
-            </div>
-            <StaggerItem className="mt-9 flex flex-wrap gap-x-8 gap-y-4">
-              <ArrowLink href="/about">Learn more about us</ArrowLink>
-              <ArrowLink href="/villas/model-villa" muted>
-                View the model villa
-              </ArrowLink>
-            </StaggerItem>
-          </Stagger>
-        </div>
+          ))}
+        </Stagger>
       </Container>
     </Section>
   );
@@ -166,38 +192,7 @@ export function VillaOffer() {
   );
 }
 
-/* 4. Enquiry band */
-export function EnquiryBand() {
-  return (
-    <section id="price-list" aria-labelledby="band-title" className="relative overflow-hidden bg-ink py-16 text-paper md:py-20">
-      <ParallaxLayer>
-        <Image src={ref.bandNightPool.src} alt="" fill sizes="100vw" className="object-cover" />
-      </ParallaxLayer>
-      <div aria-hidden className="absolute inset-0 bg-ink/75" />
-      <Container className="relative">
-        <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
-          <Reveal from="left">
-            <Eyebrow onDark>Prices and availability</Eyebrow>
-            <Heading id="band-title" size="band" light="Get the" bold="price list" stacked={false} className="mt-4" />
-            <p className="mt-5 max-w-md text-sm leading-6 text-paper/80">
-              Tell us how to reach you and we will send the current cost sheet, payment schedule and
-              availability.
-            </p>
-            <WhatsAppButton
-              message="Hello, please send me the Bilva Resorts price list."
-              className="mt-7"
-            />
-          </Reveal>
-          <Reveal delay={0.15} from="right" className="bg-white p-6 text-ink md:p-9">
-            <EnquiryForm variant="compact" defaultType="villa" source="home: price list band" />
-          </Reveal>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-/* 5. Inside the villa */
+/* 4. Inside the villa */
 export function InsideVilla() {
   return (
     <Section tone="paper" labelledBy="inside-title">
@@ -207,7 +202,7 @@ export function InsideVilla() {
             <Eyebrow>Inside the villa</Eyebrow>
             <Heading id="inside-title" light="Two bedrooms." bold="One private pool." className="mt-4" />
           </div>
-          <ArrowLink href="/villas/model-villa">Tour the model villa</ArrowLink>
+          <ArrowLink href="/villas#rooms">See every room</ArrowLink>
         </Reveal>
         <Stagger className="mt-10 grid gap-8 md:mt-14 md:grid-cols-3 md:gap-6" gap={0.16}>
           {villaSpaces.map((space) => (

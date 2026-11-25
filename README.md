@@ -36,25 +36,46 @@ Other commands: `npm run build` for a production build, `npm run lint` for ESLin
 | `src/app/*/page.tsx` | One file per page |
 | `src/app/api/enquiries/route.ts` | Enquiry API |
 
-## One home for each topic
+## Structure
+
+The menu has six items: Villas, Hotel, Booking, Invest, Location Highlights and Gallery.
+The logo goes Home. About, Testimonials, FAQ and Contact are in the footer. The Home
+page leads with the three things a visitor can do: buy a villa, stay at the hotel, or
+rent a villa.
 
 Each topic is told in full on one page. Other pages link to it and do not repeat it.
 
-| Topic | Told in full on | Elsewhere |
-| --- | --- | --- |
-| Price card and what is included | Villas | Home shows the card only; Investment shows a cost ledger |
-| Payment stages and extra charges | Investment | Villas links to it |
-| Rental programme | Rental Income | Investment has a short teaser |
-| Calculator | ROI Calculator | Investment and Rental Income link to it; Home has a two-slider preview |
-| Why Gokarna | Home | About lists the six reasons by name only |
-| Resort amenities | Villas | Hotel mentions them in one sentence |
-| Floor plan and room tour | Model Villa | Villas shows the site layout and links across |
-| Pictures | Gallery | Villas links to it |
+| Topic | Told in full on |
+| --- | --- |
+| The villa: price, what is included, rooms, plans, amenities, naming | Villas |
+| The money: costs, purchase steps, rental programme, calculator | Invest |
+| Staying in a villa as a guest | Booking |
+| The hotel | Hotel |
+| The map, nearby places, connectivity, why Gokarna | Location Highlights |
+| Pictures | Gallery |
 
-The full enquiry form sits only where the page needs it: Home, Villas, Personalise,
-the ROI Calculator, Hotel and Contact. Every other page ends with the slim `NextStep`
-band (`src/components/blocks.tsx`), whose button opens the Contact form with the
-subject already chosen.
+Villas and Invest used to be three pages each. The old addresses redirect to the
+matching part of the single page (see `redirects` in `next.config.ts`).
+
+The full enquiry form sits on Home, Villas, Invest, Booking, Hotel and Contact. Every
+other page ends with the slim `NextStep` band (`src/components/blocks.tsx`), whose
+button opens the Contact form with the subject already chosen.
+
+## Booking
+
+Confirmed by Bilva Resorts on 24 November 2026: villa stays are not open yet, bookings
+are taken as requests through the form, and no nightly rate is published. Nothing on
+the Booking page may suggest that a stay can be booked or paid for today. When stays
+open, update `bookingSteps` and `bookingNotes` in `src/lib/content.ts` and the hero tag
+on the page.
+
+## Location distances
+
+The distances on the Location Highlights page and the Home page are road distances from
+the Bilva Resorts pin, worked out on OpenStreetMap routing on 24 November 2026 and
+rounded. They live in `src/lib/content.ts` (`locationHighlights`, `connectivity`,
+`nearbyPlaces`). On the illustrated map, the black road from the highway to the resort
+follows OpenStreetMap's route; the thinner roads follow the sketch Bilva Resorts supplied.
 
 ## Testimonials
 
@@ -103,8 +124,9 @@ enquiry is dropped silently. The Postgres and email adapters arrive in milestone
   plan and the site layout. The last two are tagged "to follow" and are photographs on
   purpose; another developer's drawing must never be shown as Bilva's plan. Swap each one
   in `src/lib/images.ts` (`bathroom`, `tourLiving`, `planLiving`, `siteAerial`).
-- `public/brand/logo-color.png` was derived from the logo embedded in the price sheet.
-  Replace it with the original vector artwork.
+- `public/brand/leaf.png` is the bilva leaf Bilva Resorts supplied, cut out of its white
+  background. It is the logo in the header and footer, and the browser-tab icon
+  (`src/app/icon.png`).
 - The illustrated map in `src/components/LocationMap.tsx` places the site pin from the
   coordinates Bilva supplied; the other features are approximate and not to scale. The
   pin opens the Google Maps link held in `src/lib/site.ts` (`mapsUrl`).

@@ -98,34 +98,6 @@ export const villaSpaces = [
   },
 ];
 
-/** [brief] Six-step journey from the rental income brief. */
-export const journey = [
-  {
-    title: "Purchase your villa",
-    text: "Reserve with the booking amount and pay in four stages linked to construction.",
-  },
-  {
-    title: "Personalise it",
-    text: "Give your villa a name inspired by your Nakshatram.",
-  },
-  {
-    title: "Enjoy your holiday home",
-    text: "Stay whenever you wish. The villa is yours.",
-  },
-  {
-    title: "Make it available",
-    text: "If you choose, Bilva lists your villa for holiday rentals while you are away.",
-  },
-  {
-    title: "Welcome guests",
-    text: "Bilva looks after bookings, check-in, housekeeping and guest support.",
-  },
-  {
-    title: "Generate rental revenue",
-    text: "Income depends on bookings, season and costs. It is not guaranteed.",
-  },
-];
-
 /** [brief] Themes from the Gokarna audience chart, shown without percentages. */
 export const themes = [
   {
@@ -154,15 +126,14 @@ export const themes = [
   },
 ];
 
-/** [proposed] Distances are added once the site pin is confirmed. */
+/** A short list for the Home page. Distances as in `locationHighlights` and `connectivity` below. */
 export const nearbyPlaces = [
-  "Mahabaleshwar Temple",
-  "Gokarna Main Beach",
-  "Kudle Beach",
-  "Om Beach",
-  "Half Moon Beach",
-  "Paradise Beach",
-  "Gokarna Road railway station",
+  { name: "Mahabaleshwar Temple", distance: "7 km" },
+  { name: "Gokarna Main Beach", distance: "7 km" },
+  { name: "Om Beach", distance: "12 km" },
+  { name: "Gokarna Road station", distance: "9 km" },
+  { name: "National Highway 66", distance: "10 km" },
+  { name: "Goa airport, Dabolim", distance: "140 km" },
 ];
 
 /** [proposed] Only questions answerable from confirmed facts. */
@@ -418,8 +389,12 @@ export const faqGroups = [
     ],
   },
   {
-    title: "Hotel and visits",
+    title: "Hotel, stays and visits",
     items: [
+      {
+        q: "Can I book a stay at Bilva Resorts?",
+        a: "Not yet. Villa stays are not open and no rates have been published. Send a stay request on the Booking page and we will contact you when booking opens.",
+      },
       {
         q: "Is there a hotel at Bilva Resorts?",
         a: "Yes. A hotel is under construction as part of the same development. You can register your interest and we will contact you when reservations open.",
@@ -430,8 +405,113 @@ export const faqGroups = [
       },
       {
         q: "Where is Bilva Resorts?",
-        a: "At Survey No. 296/1, Uttara Kannada District, Karnataka 581319, inland and north of Gokarna town. The Location page has a map with a link to Google Maps.",
+        a: "At Survey No. 296/1, Uttara Kannada District, Karnataka 581319, inland and north of Gokarna town. The Location Highlights page has a map with a link to Google Maps.",
       },
     ],
   },
 ];
+
+/* ------------------------------------------------------------------ */
+/* Booking: villa stays                                                */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Confirmed by Bilva Resorts on 24 November 2026: stays are not open yet,
+ * bookings are taken as requests, and no nightly rate is published.
+ */
+
+/** [sheet] What a guest finds in the villa, from the list of what each villa includes. */
+export const stayFeatures = [
+  { title: "Two bedrooms", text: "Each with a bed and mattress. Two air conditioners are included." },
+  { title: "A private pool", text: "Your own swimming pool, with sun loungers, a gazebo and an outdoor shower." },
+  { title: "Living and dining", text: "A furnished living room with a sofa, dining table and 65-inch television." },
+  { title: "A kitchen", text: "Fitted with a fridge, gas stove and chimney." },
+];
+
+/** [proposed] How a stay request is handled until booking opens. */
+export const bookingSteps = [
+  { title: "Send a request", text: "Tell us your dates and how many guests are travelling." },
+  { title: "We note your dates", text: "Your request goes on our list. Nothing is reserved or charged yet." },
+  { title: "We contact you", text: "When stays open, we confirm availability and the rate for your dates." },
+  { title: "You decide", text: "You book only if the dates and the rate suit you." },
+];
+
+export const bookingNotes = [
+  "Stays are not open yet. We will tell you as soon as they are.",
+  "No payment is taken on this website.",
+  "Rates are shared when your dates are confirmed. None is published yet.",
+  "The hotel is under construction. You can register interest on the Hotel page.",
+];
+
+/* ------------------------------------------------------------------ */
+/* Location highlights                                                 */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Road distances from the Bilva Resorts pin (14.587415 N, 74.328712 E), worked
+ * out on OpenStreetMap routing on 24 November 2026 and rounded. They are
+ * approximate; the page says so.
+ */
+export const distanceNote =
+  "Approximate road distances from Bilva Resorts, measured on OpenStreetMap on 24 November 2026. Journey times vary with traffic and season, so check before you travel.";
+
+export const locationHighlights = [
+  {
+    group: "Temple town",
+    items: [
+      { name: "Mahabaleshwar Temple", distance: "7 km" },
+      { name: "Gokarna town", distance: "7 km" },
+    ],
+  },
+  {
+    group: "Beaches",
+    items: [
+      { name: "Gokarna Main Beach", distance: "7 km" },
+      { name: "Kudle Beach", distance: "11 km" },
+      { name: "Om Beach", distance: "12 km" },
+      { name: "Half Moon and Paradise beaches", distance: "By trail or boat from Om Beach" },
+    ],
+  },
+  {
+    group: "Sights and day trips",
+    items: [
+      { name: "Tadadi fishing port", distance: "10 km" },
+      { name: "Mirjan Fort", distance: "21 km" },
+      { name: "Vibhooti Falls", distance: "42 km" },
+      { name: "Karwar", distance: "47 km" },
+      { name: "Yana Caves", distance: "50 km" },
+    ],
+  },
+];
+
+export const connectivity = [
+  {
+    mode: "By road",
+    items: [
+      { name: "National Highway 66", distance: "10 km", note: "The coastal highway between Goa and Mangaluru" },
+      { name: "Ankola", distance: "21 km" },
+      { name: "Kumta", distance: "31 km" },
+    ],
+  },
+  {
+    mode: "By rail",
+    items: [
+      { name: "Gokarna Road station", distance: "9 km", note: "The nearest station. Not every train stops here" },
+      { name: "Ankola station", distance: "21 km" },
+      { name: "Kumta station", distance: "31 km" },
+    ],
+  },
+  {
+    mode: "By air",
+    items: [
+      { name: "Goa International Airport, Dabolim", distance: "140 km" },
+      { name: "Hubballi Airport", distance: "145 km" },
+      { name: "Manohar International Airport, Mopa", distance: "173 km" },
+      { name: "Mangaluru International Airport", distance: "233 km" },
+    ],
+  },
+];
+
+/** The road in from the highway, as OpenStreetMap routes it. */
+export const routeFromHighway =
+  "From National Highway 66, turn off at the Gokarna junction near Madangeri. Follow Gokarna Road west for about 4 km, then take the village road through Bankikodla to the resort. It is about 10 km in all.";

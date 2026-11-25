@@ -19,7 +19,7 @@ export type ExtraField = {
   /** Key the answer is stored under with the enquiry. */
   name: string;
   label: string;
-  type?: "text" | "number";
+  type?: "text" | "number" | "date";
   placeholder?: string;
 };
 

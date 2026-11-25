@@ -54,57 +54,36 @@ export type NavItem = {
   children?: { label: string; href: string; note?: string }[];
 };
 
+/**
+ * Six items. The logo goes Home; About, Testimonials, FAQ and Contact are in the
+ * footer. Villas and Invest are one page each, so there are no dropdowns.
+ */
 export const nav: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  {
-    label: "Villas",
-    href: "/villas",
-    children: [
-      { label: "The Villas", href: "/villas", note: "Specification, price and site layout" },
-      { label: "Model Villa", href: "/villas/model-villa", note: "Room by room" },
-      {
-        label: "Your Villa · Your Identity",
-        href: "/villas/personalise",
-        note: "A name inspired by your Nakshatram",
-      },
-    ],
-  },
-  {
-    label: "Invest",
-    href: "/investment",
-    children: [
-      { label: "Villa Investment", href: "/investment", note: "Price, process and costs" },
-      {
-        label: "Rental Income",
-        href: "/investment/rental-income",
-        note: "The optional rental programme",
-      },
-      { label: "ROI Calculator", href: "/investment/calculator", note: "Test your own assumptions" },
-    ],
-  },
+  { label: "Villas", href: "/villas" },
   { label: "Hotel", href: "/hotel" },
+  { label: "Booking", href: "/booking" },
+  { label: "Invest", href: "/investment" },
+  { label: "Location Highlights", href: "/location" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Location", href: "/location" },
-  { label: "Testimonials", href: "/testimonials" },
 ];
 
 export const footerNav = {
   villas: [
     { label: "The Villas", href: "/villas" },
-    { label: "Model Villa", href: "/villas/model-villa" },
-    { label: "Your Villa · Your Identity", href: "/villas/personalise" },
+    { label: "Room by Room", href: "/villas#rooms" },
+    { label: "Your Villa · Your Identity", href: "/villas#naming" },
   ],
   invest: [
     { label: "Villa Investment", href: "/investment" },
-    { label: "Rental Income", href: "/investment/rental-income" },
-    { label: "ROI Calculator", href: "/investment/calculator" },
+    { label: "Rental Income", href: "/investment#rental" },
+    { label: "ROI Calculator", href: "/investment#calculator" },
   ],
   explore: [
-    { label: "About", href: "/about" },
     { label: "Hotel", href: "/hotel" },
+    { label: "Booking", href: "/booking" },
+    { label: "Location Highlights", href: "/location" },
     { label: "Gallery", href: "/gallery" },
-    { label: "Location", href: "/location" },
+    { label: "About", href: "/about" },
     { label: "Testimonials", href: "/testimonials" },
     { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },

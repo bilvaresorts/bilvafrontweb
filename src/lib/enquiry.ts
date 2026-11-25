@@ -5,6 +5,7 @@ export const enquiryTypes = [
   { id: "investment", label: "Investment" },
   { id: "rental", label: "Rental income" },
   { id: "hotel", label: "Hotel" },
+  { id: "booking", label: "Villa stay" },
   { id: "site-visit", label: "Site visit" },
   { id: "general", label: "General enquiry" },
 ] as const;

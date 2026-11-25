@@ -12,6 +12,11 @@ import { cn } from "./ui";
  * The pin opens the same place in Google Maps. Everything else is a guide to
  * how places relate, not a survey: positions are approximate and it is not to
  * scale.
+ *
+ * Roads: the black line from the highway to the resort follows the route
+ * OpenStreetMap gives (Gokarna Road, then the village road through
+ * Bankikodla). The thinner roads, including the one that crosses the Gangavali
+ * to the north, follow the sketch Bilva Resorts supplied.
  */
 
 const WATER = "#cfd2d3";
@@ -43,6 +48,36 @@ function Beach({ x, y, label, lx, ly, delay }: { x: number; y: number; label: st
   );
 }
 
+/** A small marker for a well-known place, with its name to the right or left. */
+function Place({
+  x,
+  y,
+  label,
+  side = "right",
+  gap = 10,
+}: {
+  x: number;
+  y: number;
+  label: string;
+  side?: "left" | "right";
+  gap?: number;
+}) {
+  return (
+    <g>
+      <rect x={x - 4} y={y - 4} width="8" height="8" transform={`rotate(45 ${x} ${y})`} fill={INK} />
+      <text
+        x={side === "right" ? x + gap : x - gap}
+        y={y + 4}
+        textAnchor={side === "right" ? "start" : "end"}
+        fontSize="12.5"
+        fill={INK}
+      >
+        {label}
+      </text>
+    </g>
+  );
+}
+
 export function LocationMap({ className }: { className?: string }) {
   return (
     <figure className={cn("relative", className)}>
@@ -59,8 +94,10 @@ export function LocationMap({ className }: { className?: string }) {
         <desc id="map-desc">
           Bilva Resorts lies inland, north of Gokarna town. The Arabian Sea is to the west, the Gangavali
           River to the north and the Aghanashini River to the south-east. Gokarna Main, Kudle, Om, Half Moon
-          and Paradise beaches run along the coast south of the town. National Highway 66 and the railway run
-          north to south on the eastern side.
+          and Paradise beaches run along the coast south of the town. National Highway 66 runs north to south
+          on the eastern side, with the railway and Gokarna Road station just west of it. A road leaves the
+          highway at Madangeri, runs west towards Gokarna and branches through Bankikodla to the resort.
+          Jatayu Teertha, Tadadi port, Mirjan Fort, Navlare View Point and Chamundeshwari Temple are marked.
         </desc>
 
         {/* Land */}
@@ -125,20 +162,20 @@ export function LocationMap({ className }: { className?: string }) {
           </text>
         </motion.g>
 
-        {/* Railway */}
+        {/* Railway, just west of the highway */}
         <motion.g variants={fade(0.9)}>
           <path
             fill="none"
             stroke={GREY}
             strokeWidth="2.5"
             strokeDasharray="10 8"
-            d="M770 0C772 100 790 200 800 290C816 400 850 520 880 640C900 730 915 820 922 900"
+            d="M638 0C640 60 634 120 650 190C662 240 664 262 672 290C686 340 706 380 724 440C746 520 770 640 780 760C784 820 786 860 786 900"
           />
-          <circle cx="800" cy="290" r="6" fill="#ffffff" stroke={INK} strokeWidth="2" />
-          <text x="816" y="286" fontSize="13" fontWeight="600" fill={INK}>
+          <circle cx="662" cy="250" r="6" fill="#ffffff" stroke={INK} strokeWidth="2" />
+          <text x="648" y="246" textAnchor="end" fontSize="13" fontWeight="600" fill={INK}>
             Gokarna Road
           </text>
-          <text x="816" y="302" fontSize="11.5" fill={GREY}>
+          <text x="648" y="262" textAnchor="end" fontSize="11.5" fill={GREY}>
             railway station
           </text>
         </motion.g>
@@ -157,15 +194,30 @@ export function LocationMap({ className }: { className?: string }) {
           <text x="815" y="525.5" textAnchor="middle" fontSize="12" fontWeight="700" fill="#ffffff" letterSpacing="1">
             NH 66
           </text>
-          <text x="690" y="34" textAnchor="end" fontSize="12" fill={GREY}>
+          <text x="724" y="30" fontSize="12" fill={GREY}>
             To Ankola and Goa &uarr;
           </text>
-          <text x="832" y="884" textAnchor="end" fontSize="12" fill={GREY}>
-            To Kumta and Mangaluru &darr;
+          <text x="868" y="868" fontSize="12" fill={GREY}>
+            To Kumta and
+          </text>
+          <text x="868" y="884" fontSize="12" fill={GREY}>
+            Mangaluru &darr;
+          </text>
+          <text x="988" y="236" textAnchor="end" fontSize="12" fill={GREY}>
+            To Yana Caves &rarr;
           </text>
         </motion.g>
 
-        {/* Road to Gokarna town */}
+        {/* Local roads, as in the sketch Bilva Resorts supplied: Gokarna to Bankikodla, and north over the Gangavali */}
+        <g fill="none" stroke="#3a3a3a" strokeWidth="3.25" strokeLinecap="round" strokeLinejoin="round">
+          <motion.path variants={draw(1.2, 1.2)} d="M226 488C234 452 248 400 262 350" />
+          <motion.path
+            variants={draw(1.4, 2)}
+            d="M253 300C246 270 238 244 232 222C226 190 240 150 270 118C310 76 380 52 460 44C540 36 620 40 705 62"
+          />
+        </g>
+
+        {/* Road from the highway to Gokarna town */}
         <motion.path
           variants={draw(0.9, 1.6)}
           fill="none"
@@ -174,6 +226,40 @@ export function LocationMap({ className }: { className?: string }) {
           strokeLinecap="round"
           d="M738 290C680 300 630 322 580 344C520 370 470 392 410 410C350 428 290 452 226 488"
         />
+
+        {/* The way in, in black: off the highway at Madangeri, along the Gokarna road, then through Bankikodla */}
+        <motion.path
+          variants={draw(1.4, 2.4)}
+          fill="none"
+          stroke={INK}
+          strokeWidth="5.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M738 290C680 300 630 322 580 344C520 370 470 392 410 410C384 402 360 388 338 375C318 364 300 360 280 358C268 356 262 348 256 334C252 326 250 312 253 300L280 296"
+        />
+
+        {/* Junction and village on the way in */}
+        <motion.g variants={fade(1.9)}>
+          <circle cx="738" cy="290" r="5.5" fill="#ffffff" stroke={INK} strokeWidth="2" />
+          <text x="754" y="286" fontSize="13" fontWeight="600" fill={INK}>
+            Madangeri
+          </text>
+          <text x="754" y="302" fontSize="11.5" fill={GREY}>
+            turn-off from NH 66
+          </text>
+          <circle cx="262" cy="350" r="4" fill="#ffffff" stroke={INK} strokeWidth="1.5" />
+          <text x="248" y="344" textAnchor="end" fontSize="11.5" fill={GREY}>
+            Bankikodla
+          </text>
+        </motion.g>
+
+        {/* Well-known places */}
+        <motion.g variants={fade(2.0)}>
+          <Place x={386} y={28} label="Navlare View Point" />
+          <Place x={452} y={110} label="Chamundeshwari Temple" side="left" />
+          <Place x={498} y={676} label="Tadadi port" side="left" />
+          <Place x={810} y={712} label="Mirjan Fort" side="left" gap={44} />
+        </motion.g>
 
         {/* Gokarna town */}
         <motion.g variants={fade(1.5)}>
@@ -189,6 +275,7 @@ export function LocationMap({ className }: { className?: string }) {
 
         {/* Beaches */}
         <Beach x={168} y={372} lx={148} ly={366} label="Gokarna Main Beach" delay={1.7} />
+        <Beach x={221} y={513} lx={196} ly={522} label="Jatayu Teertha" delay={1.75} />
         <Beach x={246} y={541} lx={222} ly={556} label="Kudle Beach" delay={1.8} />
         <Beach x={290} y={586} lx={262} ly={604} label="Om Beach" delay={1.9} />
         <Beach x={326} y={621} lx={298} ly={646} label="Half Moon Beach" delay={2.0} />
@@ -226,6 +313,18 @@ export function LocationMap({ className }: { className?: string }) {
               Open in Google Maps &#8599;
             </text>
           </a>
+        </motion.g>
+
+        {/* Key */}
+        <motion.g variants={fade(0.6)} fontSize="11.5" fill={GREY}>
+          <line x1="34" y1="806" x2="70" y2="806" stroke={INK} strokeWidth="5.5" strokeLinecap="round" />
+          <text x="82" y="810">Road to the resort</text>
+          <line x1="34" y1="828" x2="70" y2="828" stroke={INK} strokeWidth="9" strokeLinecap="round" />
+          <text x="82" y="832">National Highway 66</text>
+          <line x1="34" y1="850" x2="70" y2="850" stroke="#3a3a3a" strokeWidth="3.25" strokeLinecap="round" />
+          <text x="82" y="854">Other roads</text>
+          <line x1="34" y1="872" x2="70" y2="872" stroke={GREY} strokeWidth="2.5" strokeDasharray="10 8" />
+          <text x="82" y="876">Railway</text>
         </motion.g>
 
         {/* Compass */}

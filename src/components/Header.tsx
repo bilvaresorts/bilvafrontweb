@@ -90,13 +90,13 @@ export function Header() {
             className="flex shrink-0 items-center gap-3 text-paper"
             onClick={() => setMenuOpen(false)}
           >
-            {/* The logo in its own green, on a white tile so it stays legible over photographs. */}
+            {/* The bilva leaf, on a white tile so its dark green stays legible over photographs. */}
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[4px] bg-white p-1 md:h-[52px] md:w-[52px]">
               <Image
-                src="/brand/logo-color.png"
+                src="/brand/leaf.png"
                 alt=""
-                width={614}
-                height={872}
+                width={454}
+                height={640}
                 sizes="52px"
                 loading="eager"
                 className="h-full w-auto"
@@ -116,8 +116,7 @@ export function Header() {
               if (event.key === "Escape") setOpenMenu(null);
             }}
           >
-            {/* Eight items: the gap tightens between 1024 and 1280 px so the bar never crowds the button. */}
-            <ul className="flex items-center gap-[18px] xl:gap-9">
+            <ul className="flex items-center gap-6 xl:gap-9">
               {nav.map((item) => {
                 const active = isActive(pathname, item.href);
                 const linkClass = cn(
