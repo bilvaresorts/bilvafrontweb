@@ -1,6 +1,6 @@
 import { Faq, FinalEnquiry, GalleryPreview, Identity, LocationPreview, RentalIncome } from "@/components/home/bottom";
 import { Hero } from "@/components/home/HomeHero";
-import { InsideVilla, Offers, VillaOffer } from "@/components/home/top";
+import { StayOptions, VillaExplorer, VillaOffer } from "@/components/home/top";
 import { faqs } from "@/lib/content";
 import { geo, mapsUrl, site } from "@/lib/site";
 
@@ -41,9 +41,9 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
       />
       <Hero />
-      <Offers />
+      <VillaExplorer />
       <VillaOffer />
-      <InsideVilla />
+      <StayOptions />
       <Identity />
       <RentalIncome />
       <LocationPreview />

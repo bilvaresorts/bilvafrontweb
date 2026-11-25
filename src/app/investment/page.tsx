@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { EnquirySection, NumberedList, PageHero, SectionHeader, StepRow, pad } from "@/components/blocks";
+import { EnquirySection, PageHero, SectionHeader, StepRow, pad } from "@/components/blocks";
 import { Calculator } from "@/components/Calculator";
 import { RuleList } from "@/components/page-blocks";
 import { PrefillButton } from "@/components/PrefillButton";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
+import { RevealCards } from "@/components/RevealCards";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Heading, Section } from "@/components/ui";
 import { charges, price, purchaseSteps, reasonsToOwn, rentalProgramme } from "@/lib/content";
 import { formatInr } from "@/lib/format";
@@ -51,7 +52,7 @@ export default function InvestmentPage() {
         image={{ ...ref.heroResortPool, note: ILLUSTRATIVE }}
         light="Own a villa."
         bold="Understand the numbers."
-        summary="The price, the payment stages, the optional rental programme and a calculator to test your own assumptions. No returns are promised."
+        summary="What you pay, when you pay it, and what renting could earn. No returns are promised."
       >
         <ButtonLink href="#calculator" variant="solid-light">
           Calculate your returns
@@ -66,15 +67,12 @@ export default function InvestmentPage() {
 
       <Section tone="paper" labelledBy="why-title">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-            <SectionHeader id="why-title" eyebrow="Why own at Bilva" light="A holiday home" bold="that is yours." column>
-              <p>
-                Bilva Resorts is not only selling a holiday home. It offers a villa you own, can name and can
-                choose to rent out.
-              </p>
-            </SectionHeader>
-            <NumberedList items={reasonsToOwn} />
-          </div>
+          <SectionHeader id="why-title" eyebrow="Why own at Bilva" light="A holiday home" bold="that is yours.">
+            <p>A villa you own, name and can choose to rent out.</p>
+          </SectionHeader>
+          <Reveal className="mt-8 md:mt-12" delay={0.1}>
+            <RevealCards items={reasonsToOwn} />
+          </Reveal>
         </Container>
       </Section>
 
@@ -124,10 +122,7 @@ export default function InvestmentPage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             <SectionHeader id="programme-title" eyebrow="Rental income" light="Enjoy it." bold="Or let it earn." column>
-              <p>
-                When you are not using your villa, you can make it available for holiday rentals. Bilva manages
-                rentals for owners who opt in. Each step is marked with who takes it: you, or Bilva.
-              </p>
+              <p>Away from your villa? Rent it out, and Bilva manages it. Each step shows who does what.</p>
             </SectionHeader>
             <Stagger as="ol" className="border-t border-rule" gap={0.1}>
               {rentalProgramme.map((item, index) => (
@@ -156,10 +151,7 @@ export default function InvestmentPage() {
       <Section tone="mist" labelledBy="lakh-title">
         <Container>
           <SectionHeader id="lakh-title" eyebrow="An illustration" light="What it takes to reach" bold="₹1 lakh a month.">
-            <p>
-              ₹1 lakh a month is ₹12 lakh a year of gross revenue. These three combinations of nightly rate and
-              occupancy reach it. This is arithmetic, not a market rate or a promise.
-            </p>
+            <p>Three ways to reach ₹12 lakh a year before costs. This is arithmetic, not a market rate or a promise.</p>
           </SectionHeader>
           <Stagger className="mt-10 grid gap-px bg-rule md:mt-14 md:grid-cols-3" gap={0.14}>
             {lakhIllustration.map((item) => (
@@ -189,10 +181,7 @@ export default function InvestmentPage() {
       <Section tone="paper" id="calculator" labelledBy="calculator-title">
         <Container>
           <SectionHeader id="calculator-title" eyebrow="ROI calculator" light="Test your own" bold="assumptions.">
-            <p>
-              Only the purchase price and booking amount come from the Bilva price sheet. Every rental and cost
-              figure is yours to set. Gross and net are always shown separately.
-            </p>
+            <p>The price comes from the Bilva price sheet. Every rental and cost figure is yours to set.</p>
           </SectionHeader>
           <div className="mt-10 md:mt-14">
             <Calculator />
@@ -203,7 +192,7 @@ export default function InvestmentPage() {
       <EnquirySection
         light="Talk to us about"
         bold="owning a villa."
-        text="Send your details and we will share the cost sheet, the payment schedule and the rental programme terms. An estimate sent from the calculator arrives with your enquiry."
+        text="Send your details and we will share the numbers. An estimate sent from the calculator arrives with your enquiry."
         points={["The current cost sheet", "The payment schedule in rupees", "Rental programme terms"]}
         defaultType="investment"
         image={{ src: ref.bandVillaDusk.src }}

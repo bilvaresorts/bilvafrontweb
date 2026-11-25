@@ -51,6 +51,31 @@ export const inclusions = [
   },
 ];
 
+/**
+ * [brief] What an owner can do with a villa, asked for by Bilva Resorts on
+ * 25 November 2026. The first line is the short version, used in the footer.
+ *
+ * Two of these need care. "Lease it back" names an arrangement whose terms are
+ * not yet on this site; the Invest page describes only the optional rental
+ * programme. "Get monthly income" is starred wherever it is shown, and the note
+ * below goes with it: income from renting is never promised on this site.
+ */
+export const ownershipTagline = "Buy a villa. Lease it back. Rent it out. Enjoy your private pool.";
+
+export const ownershipPoints: { title: string; starred?: boolean }[] = [
+  { title: "Buy a villa" },
+  { title: "Lease it back" },
+  { title: "Rent it out" },
+  { title: "Get monthly income", starred: true },
+  { title: "Enjoy your private pool" },
+  { title: "Holiday in your own villa" },
+  { title: "Name it after your Nakshatram" },
+  { title: "Let Bilva manage it" },
+];
+
+export const ownershipNote =
+  "Income from renting depends on bookings, season and costs. It is not guaranteed.";
+
 /** [sheet] Listed as resort amenities on the price sheet. */
 export const resortAmenities = [
   "Common pool",
@@ -59,35 +84,6 @@ export const resortAmenities = [
   "Spa",
   "Game zone",
   "Coffee shop",
-];
-
-/**
- * [proposed] copy. The images are reference images from balitecture.com (see
- * src/lib/images.ts), so each carries the "Illustrative image" label. An empty
- * `src` shows a labelled placeholder.
- */
-export const villaSpaces = [
-  {
-    title: "Living and dining",
-    text: "A furnished living room with a sofa, dining table and 65-inch television, ready at handover.",
-    src: ref.livingDining.src,
-    alt: ref.livingDining.alt,
-    note: ILLUSTRATIVE,
-  },
-  {
-    title: "Two bedrooms",
-    text: "Both bedrooms come with beds and mattresses. Two air conditioners are included.",
-    src: ref.bedroom.src,
-    alt: ref.bedroom.alt,
-    note: ILLUSTRATIVE,
-  },
-  {
-    title: "Pool and garden",
-    text: "Your own swimming pool with sun loungers, a gazebo and an outdoor shower.",
-    src: ref.poolGarden.src,
-    alt: ref.poolGarden.alt,
-    note: ILLUSTRATIVE,
-  },
 ];
 
 /** [brief] Themes from the Gokarna audience chart, shown without percentages. */
@@ -132,23 +128,23 @@ export const nearbyPlaces = [
 export const faqs = [
   {
     q: "What is included in the villa price?",
-    a: "The price from ₹1.36 Cr covers the two-bedroom villa with its compound wall, the villa amenities (private pool, sun loungers, gazebo and outdoor shower) and the interiors, including air conditioners, beds, television, sofa, dining table and kitchen appliances. GST, registration and statutory charges are extra.",
+    a: "The villa with its compound wall, the private pool, sun loungers, gazebo and outdoor shower, and the interiors: air conditioners, beds, television, sofa, dining table and kitchen appliances. GST, registration and statutory charges are extra.",
   },
   {
     q: "How is the payment scheduled?",
-    a: "In four stages: 20% on booking with the Agreement of Sale, 35% at the start of infrastructure work, 40% at the start of the ground floor slab and 5% on handover. The cost sheet we send you shows the rupee amount for each stage.",
+    a: "In four stages: 20% on booking, 35% when infrastructure work starts, 40% when the ground floor slab starts and 5% on handover. Your cost sheet shows the amount for each stage.",
   },
   {
     q: "Can I rent out my villa when I am not using it?",
-    a: "Yes, if you choose to. Owners decide whether and when to make their villa available, and Bilva manages rentals for owners who opt in. Nothing obliges you to rent it out.",
+    a: "Yes, if you choose to. You decide when your villa is available, and Bilva manages the rentals for owners who opt in.",
   },
   {
     q: "Is the ₹1 lakh a month rental figure guaranteed?",
-    a: "No. It is an illustration of what a given nightly rate and occupancy would produce before costs. Actual income depends on bookings, season, nightly rates, platform commissions and running costs, and returns are not guaranteed.",
+    a: "No. It is an illustration of what one nightly rate and occupancy would produce before costs. Actual income depends on bookings, season and costs, and returns are not guaranteed.",
   },
   {
     q: "Can I choose the name of my villa?",
-    a: "Yes. Each villa can carry a name inspired by its owner's Nakshatram, such as Villa Sravana. You can preview a name on this site, and Bilva Resorts confirms it with you at booking.",
+    a: "Yes. Each villa can carry a name inspired by its owner's Nakshatram, such as Villa Sravana. Bilva Resorts confirms it with you at booking.",
   },
 ];
 
@@ -277,14 +273,14 @@ export const modelVillaRooms = [
   },
   {
     title: "Living room",
-    text: "Sofa, dining table, TV unit and a 65-inch television are part of the interiors.",
+    text: "Sofa, dining table and a 65-inch television come with the villa.",
     src: ref.livingDining.src,
     alt: ref.livingDining.alt,
     note: ILLUSTRATIVE,
   },
   {
     title: "Bedrooms",
-    text: "Two bedrooms, each with a bed and 8-inch mattress. Two 1.5-ton air conditioners are included.",
+    text: "Two bedrooms with beds and 8-inch mattresses. Two air conditioners are included.",
     src: ref.bedroom.src,
     alt: ref.bedroom.alt,
     note: ILLUSTRATIVE,
@@ -506,4 +502,4 @@ export const connectivity = [
 
 /** The road in from the highway, as OpenStreetMap routes it. */
 export const routeFromHighway =
-  "From National Highway 66, turn off at the Gokarna junction near Madangeri. Follow Gokarna Road west for about 4 km, then take the village road through Bankikodla to the resort. It is about 10 km in all.";
+  "From National Highway 66, turn off at the Gokarna junction near Madangeri. Follow Gokarna Road west for about 4 km, then the village road through Bankikodla. About 10 km in all.";

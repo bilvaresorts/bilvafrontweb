@@ -23,7 +23,7 @@ export default function HotelPage() {
         light="The hotel at"
         bold="Bilva Resorts."
         image={{ ...ref.heroGreyVilla, note: ILLUSTRATIVE }}
-        summary="A hotel is being built as part of the resort. Reservations are not open yet. Register your interest and we will contact you when they are."
+        summary="A hotel is being built inside the resort. Reservations are not open yet."
         tag="Under construction"
       >
         <ButtonLink href="#enquire" variant="solid-light">
@@ -47,17 +47,10 @@ export default function HotelPage() {
             <Eyebrow>Part of the same destination</Eyebrow>
             <Heading id="hotel-intro-title" light="A hotel within" bold="the resort." className="mt-4" />
             <div className="mt-7 max-w-xl space-y-4 text-base leading-7 text-graphite">
+              <p>Beside the villas, for guests who want to stay without owning.</p>
               <p>
-                The hotel stands within Bilva Resorts, alongside the private villas. It gives the resort a
-                place for guests who want to stay without owning.
-              </p>
-              <p>
-                The artist&rsquo;s impressions show arched ground-floor rooms, balconies on the floors above, a
-                pool deck and an event lawn.
-              </p>
-              <p>
-                The resort plan also includes a common pool, restaurant, banquet hall, spa, game zone and
-                coffee shop. Room categories and hotel facilities will be published before opening.
+                The artist&rsquo;s impressions show arched ground-floor rooms, balconies above, a pool deck and
+                an event lawn. Room types will be published before opening.
               </p>
             </div>
           </Split>
@@ -82,8 +75,7 @@ export default function HotelPage() {
               <Eyebrow>Location</Eyebrow>
               <Heading id="hotel-more-title" as="h2" size="band" light="Inland of" bold="Gokarna town." className="mt-4" />
               <p className="mt-6 max-w-md text-base leading-7 text-graphite">
-                The resort lies north of Gokarna, the temple town known for the Mahabaleshwar Temple and
-                its beaches.
+                North of Gokarna, the temple town known for its beaches.
               </p>
               <ArrowLink href="/location" className="mt-6">
                 Explore the location
@@ -96,7 +88,7 @@ export default function HotelPage() {
                 <span className="block font-bold">your own.</span>
               </h2>
               <p className="mt-6 max-w-md text-base leading-7 text-graphite">
-                The resort also offers about 40 private pool villas for sale, each with two bedrooms.
+                About 40 two-bedroom pool villas are for sale.
               </p>
               <ArrowLink href="/villas" className="mt-6">
                 See the villas

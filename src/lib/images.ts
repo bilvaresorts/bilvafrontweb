@@ -76,9 +76,9 @@ export const ref = {
     src: at("hero-timber-pool"),
     alt: "Single-storey villa with a timber-lined roof and glass doors along a turquoise pool",
   },
-  heroDuskLiving: {
-    src: at("hero-dusk-living"),
-    alt: "Pool at dusk beside an open, lit living room",
+  heroPoolLoungers: {
+    src: at("gallery-pool-loungers"),
+    alt: "Sun loungers beside a narrow pool, under a timber-lined roof",
   },
   heroPoolLane: {
     src: at("hero-pool-lane"),
@@ -88,9 +88,9 @@ export const ref = {
     src: at("hero-garden-wall"),
     alt: "Pool edged by a wall of tropical planting",
   },
-  heroNightCourtyard: {
-    src: at("hero-night-courtyard"),
-    alt: "Courtyard pool lit at night, with planting behind",
+  heroPoolParasols: {
+    src: at("gallery-pool-deck"),
+    alt: "Timber pool deck with sun loungers and parasols",
   },
 
   /*

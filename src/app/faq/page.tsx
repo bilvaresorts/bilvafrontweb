@@ -36,7 +36,7 @@ export default function FaqPage() {
         light="Common"
         bold="questions."
         image={{ ...ref.heroPoolLane, note: ILLUSTRATIVE }}
-        summary="Straight answers on price, payment, ownership, the rental programme and the hotel. If yours is not here, ask us."
+        summary="Straight answers. If yours is not here, ask us."
       >
         <EnquireLink prefill={{ type: "general" }}>Ask a question</EnquireLink>
       </PageHero>

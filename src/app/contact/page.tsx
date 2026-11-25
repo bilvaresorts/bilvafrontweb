@@ -21,9 +21,9 @@ export default function ContactPage() {
         eyebrow="Contact"
         light="Enquire"
         bold="now"
-        image={{ ...ref.heroDuskLiving, note: ILLUSTRATIVE }}
+        image={{ ...ref.heroPoolLoungers, note: ILLUSTRATIVE }}
         compact
-        summary="Tell us what you would like to know. One form covers villa purchase, investment, rental income, the hotel and site visits."
+        summary="One form for villas, stays, the hotel and site visits."
       />
       {/* Buttons across the site open this form with /contact#enquire. */}
       <Section tone="paper" id="enquire">

@@ -17,7 +17,7 @@ export default function TermsPage() {
         eyebrow="Legal"
         light="Terms of"
         bold="use."
-        image={{ ...ref.heroNightCourtyard, note: ILLUSTRATIVE }}
+        image={{ ...ref.heroPoolParasols, note: ILLUSTRATIVE }}
         compact
         summary="The terms that apply when you use this website."
       />

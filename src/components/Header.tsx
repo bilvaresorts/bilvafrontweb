@@ -9,7 +9,29 @@ import { buttonClass, cn } from "./ui";
 
 function subscribeToScroll(onChange: () => void) {
   window.addEventListener("scroll", onChange, { passive: true });
-  return () => window.removeEventListener("scroll", onChange);
+  window.addEventListener("resize", onChange);
+  return () => {
+    window.removeEventListener("scroll", onChange);
+    window.removeEventListener("resize", onChange);
+  };
+}
+
+/** The height of the header on wide screens, in pixels. */
+const HEADER_HEIGHT = 80;
+
+/**
+ * True once the hero has scrolled up behind the header. Until then the header
+ * stays clear, so the photograph runs to the top of the screen. Heroes mark
+ * themselves with `data-hero`. A page without one counts from the first scroll.
+ */
+function pastHero(): boolean {
+  for (const hero of document.querySelectorAll("[data-hero]")) {
+    const box = hero.getBoundingClientRect();
+    // Pages kept in memory after you leave them are still in the document, with no size.
+    if (box.height === 0) continue;
+    return box.bottom <= HEADER_HEIGHT;
+  }
+  return window.scrollY > 24;
 }
 
 /** True for the page itself and for any page beneath it, so "Villas" stays lit on the Model Villa page. */
@@ -28,7 +50,9 @@ function PendingLine() {
 
 export function Header() {
   const pathname = usePathname();
-  const scrolled = useSyncExternalStore(
+  const scrolled = useSyncExternalStore(subscribeToScroll, pastHero, () => false);
+  /** True once the page has moved at all. Inside a hero this only frosts the header. */
+  const moved = useSyncExternalStore(
     subscribeToScroll,
     () => window.scrollY > 24,
     () => false,
@@ -73,39 +97,46 @@ export function Header() {
       <div
         aria-hidden
         className={cn(
-          "pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-ink/70 to-transparent transition-opacity duration-300",
+          "pointer-events-none absolute inset-x-0 top-0 h-28 bg-linear-to-b from-ink/50 to-transparent transition-opacity duration-300",
           solid ? "opacity-0" : "opacity-100",
         )}
       />
       <div
+        // Clear at the top of a page, lightly frosted while the hero scrolls beneath, black after it.
         className={cn(
-          "relative transition-colors duration-300",
-          solid ? "bg-ink" : "bg-transparent",
+          "relative transition-[background-color,backdrop-filter] duration-300",
+          solid ? "bg-ink" : moved ? "bg-ink/20 backdrop-blur-md" : "bg-transparent",
         )}
       >
-        <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between gap-6 px-6 md:h-20 md:px-10">
+        <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between gap-3 px-6 sm:gap-6 md:h-20 md:px-10">
           <Link
             href="/"
             aria-label="Bilva Resorts, home"
-            className="flex shrink-0 items-center gap-3 text-paper"
+            className="flex shrink-0 items-center gap-2 drop-shadow-[0_1px_8px_rgb(0_0_0/0.45)] md:gap-3.5 lg:gap-2.5 xl:gap-3.5"
             onClick={() => setMenuOpen(false)}
           >
-            {/* The bilva leaf, on a white tile so its dark green stays legible over photographs. */}
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[4px] bg-white p-1 md:h-[52px] md:w-[52px]">
-              <Image
-                src="/brand/leaf.png"
-                alt=""
-                width={454}
-                height={640}
-                sizes="52px"
-                loading="eager"
-                className="h-full w-auto"
-              />
-            </span>
-            <span className="flex flex-col leading-none">
-              <span className="text-[15px] font-bold tracking-[0.24em]">BILVA</span>
-              <span className="mt-1.5 text-[9px] font-medium tracking-[0.44em] text-paper/75">RESORTS</span>
-            </span>
+            {/*
+              The logo Bilva Resorts supplied, cut out of its background so it sits straight on the
+              header: the leaf, then the lettering. The sizes keep it clear of the menu at every width.
+            */}
+            <Image
+              src="/brand/mark.png"
+              alt=""
+              width={410}
+              height={319}
+              sizes="68px"
+              loading="eager"
+              className="h-[34px] w-auto md:h-[52px] lg:h-11 xl:h-[52px]"
+            />
+            <Image
+              src="/brand/wordmark.png"
+              alt=""
+              width={751}
+              height={266}
+              sizes="110px"
+              loading="eager"
+              className="h-[23px] w-auto md:h-[38px] lg:h-7 xl:h-[38px]"
+            />
           </Link>
 
           <nav
@@ -243,10 +274,11 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Written out in full, so the smaller phone size is not overridden by the shared button style. */}
             <Link
               href="/contact"
-              className={buttonClass("solid-light", "hidden h-10 shrink-0 whitespace-nowrap px-5 sm:inline-flex")}
+              className="inline-flex h-10 shrink-0 items-center justify-center whitespace-nowrap rounded-[4px] border border-paper bg-paper px-3.5 text-[11px] font-semibold uppercase tracking-button text-ink transition-colors duration-200 hover:border-white hover:bg-white max-[349px]:hidden sm:h-12 sm:px-6 sm:text-xs"
               onClick={() => setMenuOpen(false)}
             >
               Enquire now

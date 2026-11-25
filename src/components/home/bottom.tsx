@@ -21,8 +21,7 @@ export function Identity() {
             <Eyebrow onDark>Your villa. Your identity.</Eyebrow>
             <Heading id="identity-title" light="A home" bold="named after you." className="mt-4" />
             <p className="mt-7 max-w-md text-base leading-7 text-paper/75">
-              Your villa is more than a property. It is your personal sanctuary. Make it uniquely yours with a
-              name inspired by your Nakshatram.
+              Give your villa a name inspired by your Nakshatram. Pick your star and see it.
             </p>
             <ArrowLink href="/villas#naming" onDark className="mt-8">
               How villa naming works
@@ -47,12 +46,9 @@ export function RentalIncome() {
             <Eyebrow>Rental income</Eyebrow>
             <Heading id="rental-title" light="What could your" bold="villa earn?" className="mt-4" />
             <p className="mt-7 max-w-md text-base leading-7 text-graphite">
-              Move the sliders to see how nightly rate and occupancy change gross rental revenue. The starting
-              values show one way to reach about ₹1 lakh a month. They are an illustration, not a promise.
+              Move the sliders and watch the figure change. It is an illustration, not a promise.
             </p>
-            <p className="mt-4 max-w-md text-sm leading-6 text-stone">
-              Renting is optional. Each owner decides whether and when to make their villa available.
-            </p>
+            <p className="mt-3 max-w-md text-sm leading-6 text-stone">Renting is always your choice.</p>
             <ArrowLink href="/investment#calculator" className="mt-8">
               Open the full calculator
             </ArrowLink>
@@ -77,8 +73,7 @@ export function LocationPreview() {
             <Eyebrow>Location highlights</Eyebrow>
             <Heading id="location-title" light="Between two rivers" bold="and the Arabian Sea." className="mt-4" />
             <p className="mt-7 max-w-md text-base leading-7 text-graphite">
-              Gokarna sits on the Arabian Sea coast of Karnataka, between the Gangavali and Aghanashini
-              rivers. The temple town, the beaches and the highway are all a short drive from the resort.
+              The temple town, the beaches and the highway are all a short drive away.
             </p>
             <address className="mt-6 text-sm not-italic leading-6 text-stone">
               {address.line1}, {address.line2}, {address.region} {address.postalCode}

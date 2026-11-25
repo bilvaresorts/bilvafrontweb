@@ -28,7 +28,7 @@ export default function BookingPage() {
         light="Rent a villa"
         bold="in Gokarna."
         image={{ ...ref.heroPoolLifestyle, note: ILLUSTRATIVE }}
-        summary="Stay in a two-bedroom villa with its own pool at Bilva Resorts. Stays are not open yet. Send your dates and we will contact you when booking opens."
+        summary="A two-bedroom villa with its own pool. Stays are not open yet: send your dates and we will contact you when they are."
       >
         <ButtonLink href="#enquire" variant="solid-light">
           Rent a villa
@@ -44,8 +44,7 @@ export default function BookingPage() {
             <Eyebrow>The stay</Eyebrow>
             <Heading id="stay-title" light="A whole villa," bold="to yourselves." className="mt-4" />
             <p className="mt-7 max-w-md text-base leading-7 text-graphite">
-              Each villa is a private two-bedroom home on its own plot, with 2,000 sq ft of built-up space
-              behind its own compound wall.
+              A private two-bedroom home of 2,000 sq ft, behind its own compound wall.
             </p>
             <Stagger as="ul" className="mt-8 max-w-xl border-t border-rule" gap={0.08}>
               {stayFeatures.map((feature) => (
@@ -89,8 +88,7 @@ export default function BookingPage() {
                 <span className="block font-bold">Bilva Resorts.</span>
               </h2>
               <p className="mt-6 max-w-md text-base leading-7 text-graphite">
-                A hotel is under construction within the resort. Register your interest and we will contact you
-                when reservations open.
+                A hotel is under construction inside the resort. Register your interest.
               </p>
               <ArrowLink href="/hotel" className="mt-6">
                 See the hotel
@@ -103,8 +101,7 @@ export default function BookingPage() {
                 <span className="block font-bold">your own.</span>
               </h2>
               <p className="mt-6 max-w-md text-base leading-7 text-graphite">
-                The villas are for sale, from ₹1.36 Cr plus taxes and charges. Owners can choose to rent theirs
-                out when they are away.
+                Villas are for sale from ₹1.36 Cr, plus taxes and charges.
               </p>
               <ArrowLink href="/villas" className="mt-6">
                 Buy a villa

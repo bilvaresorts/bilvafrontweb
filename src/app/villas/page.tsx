@@ -7,13 +7,11 @@ import {
   SectionHeader,
   StepRow,
   VillaCard,
-  pad,
 } from "@/components/blocks";
+import { ExpandingPanels, type Panel } from "@/components/ExpandingPanels";
 import { NameplatePreview } from "@/components/NameplatePreview";
 import { PlanSlot, Split, TileGrid } from "@/components/page-blocks";
-import { Photo } from "@/components/Photo";
-import { Placeholder } from "@/components/Placeholder";
-import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
+import { Reveal } from "@/components/Reveal";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Heading, Section } from "@/components/ui";
 import { atAGlance, faqGroups, modelVillaRooms, namingSteps, resortAmenities } from "@/lib/content";
 import { ILLUSTRATIVE, ref } from "@/lib/images";
@@ -30,6 +28,18 @@ export const metadata: Metadata = {
  * rental income are on the Invest page; the pictures are in the Gallery.
  */
 
+/** The eight rooms as panels: one open, the rest waiting as strips. */
+const roomPanels: Panel[] = modelVillaRooms.map((room) => ({
+  title: room.title,
+  text: room.text,
+  image: {
+    src: room.src,
+    alt: room.alt,
+    position: room.title === "Entrance" ? "object-[50%_40%]" : undefined,
+  },
+  note: room.note,
+}));
+
 export default function VillasPage() {
   return (
     <>
@@ -38,7 +48,7 @@ export default function VillasPage() {
         image={{ ...ref.heroWhiteVilla, note: ILLUSTRATIVE }}
         light="Forty private"
         bold="pool villas."
-        summary="Two bedrooms, your own swimming pool and 2,000 sq ft of built-up space, on a plot of 40 ft by 80 ft in Gokarna."
+        summary="Two bedrooms and your own pool, in Gokarna."
         facts={atAGlance}
       >
         <ButtonLink href="#enquire" variant="solid-light">
@@ -54,16 +64,10 @@ export default function VillasPage() {
           <Split image={{ ...ref.intro, note: ILLUSTRATIVE }} reverse>
             <Eyebrow>The development</Eyebrow>
             <Heading id="development-title" light="A private villa." bold="A complete resort." className="mt-4" />
-            <div className="mt-7 max-w-xl space-y-4 text-base leading-7 text-graphite">
-              <p>
-                Bilva Resorts is a development of about 40 private villas in Gokarna, Karnataka. Each villa
-                stands on its own plot behind an 8 ft compound wall, with two bedrooms and a private pool.
-              </p>
-              <p>
-                Every villa is sold individually. You own it, you can give it a name of your own, and you
-                decide whether to make it available for holiday rentals.
-              </p>
-            </div>
+            <p className="mt-7 max-w-md text-base leading-7 text-graphite">
+              About 40 villas, each on its own plot behind an 8 ft compound wall. You own yours, name it, and
+              choose whether to rent it out.
+            </p>
             <ArrowLink href="/investment" className="mt-8">
               How buying works
             </ArrowLink>
@@ -93,42 +97,16 @@ export default function VillasPage() {
       <Section tone="paper" id="rooms" labelledBy="rooms-title">
         <Container>
           <SectionHeader id="rooms-title" eyebrow="Room by room" light="Eight spaces," bold="one private villa." />
-          <Stagger className="mt-10 grid gap-x-6 gap-y-12 md:mt-14 md:grid-cols-2" gap={0.12}>
-            {modelVillaRooms.map((room, index) => (
-              <StaggerItem key={room.title} className="group">
-                {room.src ? (
-                  <Photo
-                    src={room.src}
-                    alt={room.alt}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="aspect-[3/2] w-full"
-                    position={room.title === "Entrance" ? "object-[50%_40%]" : "object-center"}
-                    note={room.note || undefined}
-                    reveal={false}
-                  />
-                ) : (
-                  <Placeholder label={`${room.title} render`} className="aspect-[3/2] w-full" />
-                )}
-                <div className="mt-5 flex gap-5">
-                  <span className="pt-1.5 text-[11px] tabular-nums text-stone">{pad(index)}</span>
-                  <div>
-                    <h3 className="text-[22px] font-bold uppercase leading-7 tracking-display">{room.title}</h3>
-                    <p className="mt-2 max-w-md text-sm leading-6 text-graphite">{room.text}</p>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
+          <Reveal className="mt-8 md:mt-12" delay={0.1}>
+            <ExpandingPanels items={roomPanels} openShare={8} />
+          </Reveal>
         </Container>
       </Section>
 
       <Section tone="mist" id="plans" labelledBy="plans-title">
         <Container>
           <SectionHeader id="plans-title" eyebrow="Plans" light="Floor plan and" bold="site layout.">
-            <p>
-              2,000 sq ft of built-up area on a plot of 40 ft by 80 ft, with both bedrooms and the living room
-              facing the pool. Ask us which villas are available and we will send the current plan.
-            </p>
+            <p>2,000 sq ft on a 40 ft by 80 ft plot. Ask us and we will send the current plan.</p>
           </SectionHeader>
           <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-2 md:gap-8">
             <PlanSlot
@@ -168,8 +146,7 @@ export default function VillasPage() {
               column
             >
               <p>
-                Your villa is more than a property. Make it uniquely yours with a name inspired by your
-                Nakshatram. Vijay, born under Sravana, would own Villa Sravana.
+                Name your villa after your Nakshatram. Vijay, born under Sravana, would own Villa Sravana.
               </p>
             </SectionHeader>
             <Reveal delay={0.15} from="right">
@@ -201,7 +178,7 @@ export default function VillasPage() {
       <EnquirySection
         light="Buy a villa at"
         bold="Bilva Resorts."
-        text="Tell us how to reach you and we will send the current cost sheet, payment schedule and availability."
+        text="Tell us how to reach you and we will send the details."
         points={["The full cost sheet", "The four-stage payment schedule", "Which villas are available"]}
         image={{ src: ref.bandBlueDusk.src }}
         source="villas page"

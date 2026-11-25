@@ -19,7 +19,7 @@ export default function GalleryPage() {
         light="A first look at"
         bold="Bilva Resorts."
         image={{ ...ref.heroThatchPool, note: ILLUSTRATIVE }}
-        summary="The villas, the hotel and the site, in photographs, artist's impressions and illustrative images. Select any image to view it at full size."
+        summary="The villas, the hotel and the site. Tap any image to see it at full size."
       />
 
       <Section tone="paper" labelledBy="gallery-grid-title">

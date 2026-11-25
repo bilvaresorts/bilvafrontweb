@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { NextStep, NumberedList, PageHero, SectionHeader } from "@/components/blocks";
+import { NextStep, PageHero, SectionHeader } from "@/components/blocks";
 import { LocationMap } from "@/components/LocationMap";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
+import { RevealCards } from "@/components/RevealCards";
 import { ButtonLink, Container, Section, buttonClass, cn } from "@/components/ui";
 import { connectivity, distanceNote, locationHighlights, routeFromHighway, themes } from "@/lib/content";
 import { ILLUSTRATIVE, ref } from "@/lib/images";
@@ -71,12 +72,9 @@ export default function LocationPage() {
         <Container>
           <div className="grid items-start gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
             <SectionHeader id="map-section-title" eyebrow="Illustrated map" light="Where" bold="Bilva sits." column>
-              <p>
-                Gokarna lies on the Arabian Sea coast of Karnataka, between the Gangavali River to the north
-                and the Aghanashini River to the south-east. Bilva Resorts is inland, north of the town.
-              </p>
+              <p>Bilva Resorts is inland, north of Gokarna town, between the Gangavali and Aghanashini rivers.</p>
               <p className="mt-4">{routeFromHighway}</p>
-              <p className="mt-4">Select the Bilva Resorts pin on the map to open the location in Google Maps.</p>
+              <p className="mt-4">Tap the Bilva Resorts pin to open Google Maps.</p>
             </SectionHeader>
             <Reveal from="right" delay={0.1}>
               <LocationMap />
@@ -88,7 +86,7 @@ export default function LocationPage() {
       <Section tone="mist" id="highlights" labelledBy="places-title">
         <Container>
           <SectionHeader id="places-title" eyebrow="Location highlights" light="What is" bold="around you.">
-            <p>The temple town, five beaches and several day trips, with the distance by road from the resort.</p>
+            <p>The temple town, the beaches and day trips, by road from the resort.</p>
           </SectionHeader>
           <div className="mt-10 grid gap-x-10 gap-y-12 md:mt-14 md:grid-cols-3">
             {locationHighlights.map((group) => (
@@ -105,10 +103,7 @@ export default function LocationPage() {
       <Section tone="ink" id="connectivity" labelledBy="connectivity-title">
         <Container>
           <SectionHeader id="connectivity-title" eyebrow="Connectivity" light="By road, rail" bold="and air." onDark>
-            <p>
-              The coastal highway is about 10 km away, the nearest railway station about 9 km, and the nearest
-              airports are in Goa and Hubballi.
-            </p>
+            <p>The highway is about 10 km away and the station about 9 km. The nearest airports are in Goa and Hubballi.</p>
           </SectionHeader>
           <div className="mt-10 grid gap-x-10 gap-y-12 md:mt-14 md:grid-cols-3">
             {connectivity.map((group) => (
@@ -124,15 +119,12 @@ export default function LocationPage() {
 
       <Section tone="paper" labelledBy="location-themes-title">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-            <SectionHeader id="location-themes-title" eyebrow="Why Gokarna" light="A destination" bold="for every age." column>
-              <p>
-                A unique haven blending spirituality with beach lifestyle. Gokarna gives each generation its own
-                reason to come back.
-              </p>
-            </SectionHeader>
-            <NumberedList items={themes} />
-          </div>
+          <SectionHeader id="location-themes-title" eyebrow="Why Gokarna" light="A destination" bold="for every age.">
+            <p>A unique haven blending spirituality with beach lifestyle.</p>
+          </SectionHeader>
+          <Reveal className="mt-8 md:mt-12" delay={0.1}>
+            <RevealCards items={themes} columns="md:grid-cols-2 lg:grid-cols-3" />
+          </Reveal>
         </Container>
       </Section>
 
@@ -140,7 +132,7 @@ export default function LocationPage() {
         eyebrow="Site visit"
         light="Come and see"
         bold="the location."
-        text="Tell us when you would like to visit and our team will confirm a time and send directions to the site."
+        text="Tell us when you would like to visit and we will confirm a time and send directions."
         image={{ src: ref.bandPoolPlants.src }}
         primary={{ label: "Request a site visit", type: "site-visit", message: "I would like to visit the site." }}
         secondary={{ label: "See the villas", href: "/villas" }}

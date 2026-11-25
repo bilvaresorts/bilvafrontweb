@@ -54,6 +54,7 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
+      data-hero
       className="relative flex min-h-[100svh] flex-col overflow-hidden bg-ink text-paper"
     >
       <ParallaxLayer strength={6}>
@@ -78,10 +79,11 @@ export function Hero() {
           ))}
         </div>
       </ParallaxLayer>
-      <div aria-hidden className="absolute inset-0 bg-linear-to-t from-ink/90 via-ink/30 to-ink/50" />
-      <div aria-hidden className="absolute inset-0 bg-linear-to-r from-ink/55 via-ink/10 to-transparent" />
+      {/* The photograph is left bright. Shade is added only along the bottom, where the words sit. */}
+      <div aria-hidden className="absolute inset-0 bg-linear-to-t from-ink/75 via-ink/10 to-transparent" />
+      <div aria-hidden className="absolute inset-0 bg-linear-to-r from-ink/40 via-ink/5 to-transparent" />
 
-      <Container className="relative flex flex-1 flex-col justify-end pb-10 pt-32 md:pb-16">
+      <Container className="relative flex flex-1 flex-col justify-end pb-10 pt-32 [text-shadow:0_1px_2px_rgb(0_0_0/0.28),0_2px_22px_rgb(0_0_0/0.42)] md:pb-16">
         <div className="rise" style={step(0)}>
           <Eyebrow onDark>Private pool villas &middot; Gokarna, Karnataka</Eyebrow>
         </div>
@@ -96,7 +98,7 @@ export function Hero() {
             Your holiday home. Your income opportunity.
           </span>
         </h1>
-        <p className="mt-8 text-[9px] uppercase tracking-eyebrow text-paper/45 md:absolute md:bottom-5 md:right-10 md:mt-0">
+        <p className="mt-8 text-[9px] uppercase tracking-eyebrow text-paper/70 md:absolute md:bottom-5 md:right-10 md:mt-0">
           {highlights[active].note}
         </p>
       </Container>

@@ -44,7 +44,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative flex flex-col overflow-hidden bg-ink text-paper">
+    <section data-hero className="relative flex flex-col overflow-hidden bg-ink text-paper">
       {image ? (
         <>
           <ParallaxLayer>
@@ -58,19 +58,22 @@ export function PageHero({
               className={cn("hero-media object-cover", image.position ?? "object-center")}
             />
           </ParallaxLayer>
-          <div aria-hidden className="absolute inset-0 bg-linear-to-t from-ink/90 via-ink/45 to-ink/55" />
-          {/* A soft shade on the text side keeps the headline crisp over bright photographs. */}
-          <div aria-hidden className="absolute inset-0 bg-linear-to-r from-ink/60 via-ink/15 to-transparent" />
+          {/*
+            The photograph is left bright. Shade is added only where words sit: along the
+            bottom, and lightly on the text side.
+          */}
+          <div aria-hidden className="absolute inset-0 bg-linear-to-t from-ink/75 via-ink/10 to-transparent" />
+          <div aria-hidden className="absolute inset-0 bg-linear-to-r from-ink/45 via-ink/5 to-transparent" />
         </>
       ) : null}
       <Container
         className={cn(
-          "relative flex flex-1 flex-col justify-end pb-14 pt-36 md:pb-20 md:pt-48",
+          "relative flex flex-1 flex-col justify-end pb-14 pt-36 [text-shadow:0_1px_2px_rgb(0_0_0/0.28),0_2px_22px_rgb(0_0_0/0.42)] md:pb-20 md:pt-48",
           image && (compact ? "min-h-[56svh]" : "min-h-[78svh]"),
         )}
       >
         {tag ? (
-          <p className="rise mb-5 self-start bg-paper px-3 py-1.5 text-[10px] font-semibold uppercase tracking-eyebrow text-ink" style={step(0)}>
+          <p className="rise mb-5 self-start bg-paper px-3 py-1.5 text-[10px] font-semibold uppercase tracking-eyebrow text-ink [text-shadow:none]" style={step(0)}>
             {tag}
           </p>
         ) : null}
@@ -87,16 +90,16 @@ export function PageHero({
             {bold}
           </span>
         </h1>
-        <p className="rise mt-7 max-w-xl text-base leading-7 text-paper/80" style={step(3)}>
+        <p className="rise mt-7 max-w-xl text-base leading-7 text-paper/95" style={step(3)}>
           {summary}
         </p>
         {children ? (
-          <div className="rise mt-9 flex flex-wrap gap-3" style={step(4)}>
+          <div className="rise mt-9 flex flex-wrap gap-3 [text-shadow:none]" style={step(4)}>
             {children}
           </div>
         ) : null}
         {image?.note ? (
-          <p className="mt-8 text-[9px] uppercase tracking-eyebrow text-paper/50 md:absolute md:bottom-5 md:right-10 md:mt-0">
+          <p className="mt-8 text-[9px] uppercase tracking-eyebrow text-paper/70 md:absolute md:bottom-5 md:right-10 md:mt-0">
             {image.note}
           </p>
         ) : null}

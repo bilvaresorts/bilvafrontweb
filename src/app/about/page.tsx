@@ -22,19 +22,19 @@ export const metadata: Metadata = {
 const offerings = [
   {
     title: "The villas",
-    text: "About 40 private villas, each with two bedrooms and its own pool, sold individually to owners.",
+    text: "About 40 private villas, each with two bedrooms and its own pool.",
     href: "/villas",
     link: "See the villas",
   },
   {
     title: "The resort",
-    text: "A plan that includes a common pool, restaurant, banquet hall, spa, game zone and coffee shop.",
+    text: "A common pool, restaurant, banquet hall, spa, game zone and coffee shop are planned.",
     href: "/villas",
     link: "See the amenities",
   },
   {
     title: "The hotel",
-    text: "A hotel under construction within the same development, for guests who want to stay without owning.",
+    text: "Under construction, for guests who want to stay without owning.",
     href: "/hotel",
     link: "See the hotel",
   },
@@ -82,10 +82,7 @@ export default function AboutPage() {
       <Section tone="mist" labelledBy="philosophy-title">
         <Container>
           <SectionHeader id="philosophy-title" eyebrow="Our approach" light="Ownership and hospitality" bold="in one destination.">
-            <p>
-              Bilva Resorts brings three things together on one site, so owners and guests share one
-              destination.
-            </p>
+            <p>Villas, a resort and a hotel, on one site.</p>
           </SectionHeader>
           <Stagger className="mt-10 grid gap-px bg-rule md:mt-14 md:grid-cols-3" gap={0.14}>
             {offerings.map((item) => (
@@ -108,8 +105,7 @@ export default function AboutPage() {
               <Eyebrow onDark>The destination</Eyebrow>
               <Heading id="about-gokarna-title" light="Six reasons" bold="people come." className="mt-4" />
               <p className="mt-7 max-w-md text-base leading-7 text-paper/75">
-                Gokarna is a temple town on the Arabian Sea. It draws pilgrims, beach lovers, families and
-                travellers from abroad, each for their own reason.
+                A temple town on the Arabian Sea, with a reason for everyone to come.
               </p>
               <ArrowLink href="/location" onDark className="mt-8">
                 Explore the location
@@ -131,7 +127,7 @@ export default function AboutPage() {
       <NextStep
         light="Talk to"
         bold="Bilva Resorts."
-        text="Tell us what you would like to know and our team will come back with what you need to decide."
+        text="Tell us what you would like to know and we will come back to you."
         image={{ src: ref.bandDuskPool.src }}
         primary={{ label: "Enquire now", type: "general" }}
         secondary={{ label: "Read common questions", href: "/faq" }}

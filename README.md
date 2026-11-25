@@ -32,9 +32,12 @@ Other commands: `npm run build` for a production build, `npm run lint` for ESLin
 | `src/lib/images.ts` | The reference images and where their files are |
 | `src/components/` | Header, footer, form, dropdown, calculator, gallery, map, shared blocks |
 | `src/components/Reveal.tsx` | The motion toolkit: reveals, staggered groups, image unveils, parallax |
-| `src/components/home/` | The fifteen Home sections |
+| `src/components/home/` | The Home sections |
+| `src/components/ExpandingPanels.tsx` | Photographs that open on hover or tap |
+| `src/components/RevealCards.tsx` | Short points as cards, one open at a time |
 | `src/app/*/page.tsx` | One file per page |
 | `src/app/api/enquiries/route.ts` | Enquiry API |
+| `scripts/cut-logo.mjs` | Cuts the logo out of its background (see Logo) |
 
 ## Structure
 
@@ -43,8 +46,16 @@ Gallery. About, Testimonials, FAQ and Contact are in the footer.
 
 The Home hero (`src/components/home/HomeHero.tsx`) carries one headline and three
 panels: Villas, Hotel and Booking. Each panel links to its page, and pointing at one
-fades the hero photograph to that offer. The section below repeats the three with
-pictures and a line of detail.
+fades the hero photograph to that offer. Nothing below the hero repeats the three as
+cards: the villa is shown as five rooms, then its price with the ownership points
+under it ("Buy a villa", "Lease it back", "Rent it out", "Get monthly income" and four
+more), and the hotel and villa stays are shown as a pair to compare.
+
+Every page opens on a bright photograph. The hero is shaded only along the bottom and
+lightly on the text side, so the picture stays bright; keep new hero photographs to
+daytime shots. The header is clear at the top of a page, lightly frosted while the hero
+scrolls beneath it, and black once the hero has passed. A hero marks itself with
+`data-hero` so the header knows where it ends.
 
 Each topic is told in full on one page. Other pages link to it and do not repeat it.
 
@@ -63,6 +74,29 @@ matching part of the single page (see `redirects` in `next.config.ts`).
 The full enquiry form sits on Home, Villas, Invest, Booking, Hotel and Contact. Every
 other page ends with the slim `NextStep` band (`src/components/blocks.tsx`), whose
 button opens the Contact form with the subject already chosen.
+
+## Interactive components
+
+The site is designed for phones first, and copy is kept to a line or two per point.
+Two components carry detail that would otherwise be paragraphs:
+
+- `ExpandingPanels` shows a set of photographs, each with a title and a line. From
+  tablet width up they sit in a row with one open and the rest as slim strips, and open
+  on hover, click or keyboard focus. Used for the rooms on Home and Villas, and for the
+  hotel and villa stays on Home.
+- `RevealCards` shows short points as cards, with one open (dark) at a time from
+  tablet width up. Used for "Why own" on Invest and "Why Gokarna" on Location Highlights.
+On phones none of these move or need a tap: every photograph, card and line is shown
+in full, one under another. This was asked for by Bilva Resorts on 25 November 2026;
+keep it when adding new components. From tablet width up, one item is always open, so
+there is never an empty state, and everything works without a mouse.
+
+The ownership points (`OwnershipLine`, with the words in `ownershipPoints` in
+`src/lib/content.ts`) are a grid of white highlight cards under the price card: the
+leaf, a number and one short line in large type. Nothing moves; Bilva Resorts turned
+down a moving band on 25 November 2026, and a small bulleted row as too quiet. "Get
+monthly income" is starred and the note under the grid says income is not guaranteed.
+Keep that star and note on any point about income.
 
 ## Booking
 
@@ -108,7 +142,8 @@ enquiry is dropped silently. The Postgres and email adapters arrive in milestone
 
 - **Bilva's own images** live in `public/images`. On the Home page they appear in three
   places only: the Villas for sale card (`villa-pool.jpg`), the nameplate beside the
-  Nakshatram dropdown (`villa-living.jpg`) and the Hotel section (`hotel-pool.jpg`).
+  Nakshatram dropdown (`villa-living.jpg`) and the hotel (`hotel-dusk.jpg`, in the hero
+  and in the "Come and stay" pair).
 - **Reference images** live in `public/images/ref` and are listed in `src/lib/images.ts`.
   Every one of them comes from balitecture.com and shows Balitecture's villas, not
   Bilva's. They are used on Bilva Resorts' confirmation that Balitecture gave
@@ -120,6 +155,23 @@ enquiry is dropped silently. The Postgres and email adapters arrive in milestone
   tiles), then remove the "Illustrative image" note for that slot.
 - `public/images/temp-brochure-villa.jpg` is no longer used and can be deleted.
 
+## Logo
+
+`brand-source/bilva-resorts-logo.jpg` is the logo Bilva Resorts supplied on 25 November
+2026: a three-leaf mark over BILVA and RESORTS, dark green on cream. The site is black,
+so `scripts/cut-logo.mjs` cuts the logo out of its background and writes:
+
+- `public/brand/mark.png`: the leaf, transparent, lifted a little so it reads on black.
+- `public/brand/wordmark.png`: the lettering in off-white, for the header, where the
+  logo runs sideways. RESORTS is drawn larger here than in the full logo, and without
+  its two rules, so that it can still be read at header size.
+- `public/brand/logo.png`: the full logo arranged as supplied, with off-white
+  lettering, for the footer.
+- `src/app/icon.png`: the leaf on the logo's own cream, for the browser tab.
+
+The logo sits straight on the header and footer, with no tile behind it. To change the
+logo, replace the source file and run `node scripts/cut-logo.mjs` from the project root.
+
 ## Temporary content
 
 - No image slot is empty. Four still wait for Bilva's own material and show a reference
@@ -127,9 +179,7 @@ enquiry is dropped silently. The Postgres and email adapters arrive in milestone
   plan and the site layout. The last two are tagged "to follow" and are photographs on
   purpose; another developer's drawing must never be shown as Bilva's plan. Swap each one
   in `src/lib/images.ts` (`bathroom`, `tourLiving`, `planLiving`, `siteAerial`).
-- `public/brand/leaf.png` is the bilva leaf Bilva Resorts supplied, cut out of its white
-  background. It is the logo in the header and footer, and the browser-tab icon
-  (`src/app/icon.png`).
+- The logo is covered under Logo below.
 - The illustrated map in `src/components/LocationMap.tsx` places the site pin from the
   coordinates Bilva supplied; the other features are approximate and not to scale. The
   pin opens the Google Maps link held in `src/lib/site.ts` (`mapsUrl`).

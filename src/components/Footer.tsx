@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ownershipTagline } from "@/lib/content";
 import { footerNav, site } from "@/lib/site";
 import { Container } from "./ui";
 
@@ -32,20 +33,21 @@ export function Footer() {
       <Container className="py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <Link href="/" aria-label="Bilva Resorts, home" className="inline-block rounded-[4px] bg-white p-3">
+            {/* The full logo as supplied, cut out of its background so it sits straight on the footer. */}
+            <Link href="/" aria-label="Bilva Resorts, home" className="inline-block">
               <Image
-                src="/brand/leaf.png"
+                src="/brand/logo.png"
                 alt="Bilva Resorts"
-                width={454}
-                height={640}
-                sizes="96px"
-                className="h-28 w-auto"
+                width={941}
+                height={591}
+                sizes="210px"
+                className="h-28 w-auto md:h-32"
               />
             </Link>
-            <p className="mt-6 max-w-xs text-sm leading-6 text-paper/70">
-              Private pool villas in Gokarna, Karnataka. Own your villa, name it, and choose whether it earns
-              when you are away.
+            <p className="mt-7 max-w-xs text-[11px] font-semibold uppercase leading-6 tracking-eyebrow text-paper/85">
+              {ownershipTagline}
             </p>
+            <p className="mt-3 max-w-xs text-sm leading-6 text-paper/70">Private pool villas in Gokarna, Karnataka.</p>
             <address className="mt-6 text-sm not-italic leading-6 text-paper/70">
               {address.line1}, {address.line2}
               <br />
