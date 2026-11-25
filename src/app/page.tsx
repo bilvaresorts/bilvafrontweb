@@ -1,6 +1,6 @@
 import { Faq, FinalEnquiry, GalleryPreview, Identity, LocationPreview, RentalIncome } from "@/components/home/bottom";
 import { Hero } from "@/components/home/HomeHero";
-import { StayOptions, VillaExplorer, VillaOffer } from "@/components/home/top";
+import { HowItWorks, StayOptions, VillaExplorer, VillaOffer } from "@/components/home/top";
 import { faqs } from "@/lib/content";
 import { geo, mapsUrl, site } from "@/lib/site";
 
@@ -43,6 +43,7 @@ export default function HomePage() {
       <Hero />
       <VillaExplorer />
       <VillaOffer />
+      <HowItWorks />
       <StayOptions />
       <Identity />
       <RentalIncome />

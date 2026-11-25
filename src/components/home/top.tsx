@@ -1,7 +1,7 @@
+import { ownershipPoints } from "@/lib/content";
 import { ILLUSTRATIVE, ref } from "@/lib/images";
-import { VillaCard } from "../blocks";
+import { SectionHeader, StepRow, VillaCard } from "../blocks";
 import { ExpandingPanels, type Panel } from "../ExpandingPanels";
-import { OwnershipLine } from "../OwnershipLine";
 import { IMPRESSION } from "../Photo";
 import { Reveal } from "../Reveal";
 import { ArrowLink, Container, Eyebrow, Heading, Section } from "../ui";
@@ -86,25 +86,32 @@ export function VillaOffer() {
         <div className="mt-8 md:mt-14">
           <VillaCard />
         </div>
-        {/* What an owner can do with the villa: a highlighted grid of points under the price. */}
-        <div className="mt-14 md:mt-20">
-          <Reveal className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-            <h3 className="text-[1.75rem] uppercase leading-[1.05] tracking-display md:text-4xl">
-              <span className="block font-light">One villa.</span>
-              <span className="block font-bold">Many ways to use it.</span>
-            </h3>
-            <ArrowLink href="/investment">See the numbers</ArrowLink>
-          </Reveal>
-          <Reveal className="mt-7 md:mt-10" delay={0.1}>
-            <OwnershipLine />
-          </Reveal>
+      </Container>
+    </Section>
+  );
+}
+
+/* 4. How it works: what an owner can do with the villa, as numbered steps */
+export function HowItWorks() {
+  return (
+    <Section tone="mist" labelledBy="how-title" className="border-t border-rule">
+      <Container>
+        <SectionHeader
+          id="how-title"
+          eyebrow="How it works"
+          light="Own your villa."
+          bold="Earn from your investment."
+          link={{ href: "/investment#rental", label: "About the rental programme" }}
+        />
+        <div className="mt-12 md:mt-16">
+          <StepRow steps={ownershipPoints} columns="lg:grid-cols-4" />
         </div>
       </Container>
     </Section>
   );
 }
 
-/* 4. Staying without buying: the hotel, or a rented villa */
+/* 5. Staying without buying: the hotel, or a rented villa */
 const stayPanels: Panel[] = [
   {
     title: "The hotel",

@@ -47,9 +47,9 @@ Gallery. About, Testimonials, FAQ and Contact are in the footer.
 The Home hero (`src/components/home/HomeHero.tsx`) carries one headline and three
 panels: Villas, Hotel and Booking. Each panel links to its page, and pointing at one
 fades the hero photograph to that offer. Nothing below the hero repeats the three as
-cards: the villa is shown as five rooms, then its price with the ownership points
-under it ("Buy a villa", "Lease it back", "Rent it out", "Get monthly income" and four
-more), and the hotel and villa stays are shown as a pair to compare.
+cards: the villa is shown as five rooms, then its price, then "How it works" (eight
+numbered steps: "Buy a villa", "Lease it back", "Rent it out", "Get monthly income" and
+four more), and the hotel and villa stays are shown as a pair to compare.
 
 Every page opens on a bright photograph. The hero is shaded only along the bottom and
 lightly on the text side, so the picture stays bright; keep new hero photographs to
@@ -91,12 +91,11 @@ in full, one under another. This was asked for by Bilva Resorts on 25 November 2
 keep it when adding new components. From tablet width up, one item is always open, so
 there is never an empty state, and everything works without a mouse.
 
-The ownership points (`OwnershipLine`, with the words in `ownershipPoints` in
-`src/lib/content.ts`) are a grid of white highlight cards under the price card: the
-leaf, a number and one short line in large type. Nothing moves; Bilva Resorts turned
-down a moving band on 25 November 2026, and a small bulleted row as too quiet. "Get
-monthly income" is starred and the note under the grid says income is not guaranteed.
-Keep that star and note on any point about income.
+The ownership points (`ownershipPoints` in `src/lib/content.ts`) are the "How it
+works" section on Home: numbered steps on a line, each with a title and one short line,
+drawn by `StepRow`. Bilva Resorts chose this layout on 25 November 2026 over a moving
+band, a small bulleted row and a grid of cards. The line under "Get monthly income"
+says income is not guaranteed; keep that on any point about income.
 
 ## Booking
 

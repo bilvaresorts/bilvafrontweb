@@ -54,27 +54,26 @@ export const inclusions = [
 /**
  * [brief] What an owner can do with a villa, asked for by Bilva Resorts on
  * 25 November 2026. The first line is the short version, used in the footer.
+ * The points are the "How it works" steps on the Home page, in the order an
+ * owner meets them.
  *
  * Two of these need care. "Lease it back" names an arrangement whose terms are
- * not yet on this site; the Invest page describes only the optional rental
- * programme. "Get monthly income" is starred wherever it is shown, and the note
- * below goes with it: income from renting is never promised on this site.
+ * not yet on this site, so its line only says to ask; the Invest page describes
+ * only the optional rental programme. "Get monthly income" must keep the line
+ * that says income is not guaranteed: it is never promised on this site.
  */
 export const ownershipTagline = "Buy a villa. Lease it back. Rent it out. Enjoy your private pool.";
 
-export const ownershipPoints: { title: string; starred?: boolean }[] = [
-  { title: "Buy a villa" },
-  { title: "Lease it back" },
-  { title: "Rent it out" },
-  { title: "Get monthly income", starred: true },
-  { title: "Enjoy your private pool" },
-  { title: "Holiday in your own villa" },
-  { title: "Name it after your Nakshatram" },
-  { title: "Let Bilva manage it" },
+export const ownershipPoints = [
+  { title: "Buy a villa", text: "Reserve with the booking amount and pay in four stages linked to construction." },
+  { title: "Name it after your Nakshatram", text: "Give your villa a name inspired by your birth star." },
+  { title: "Enjoy your private pool", text: "Every villa has its own pool, with sun loungers beside it." },
+  { title: "Holiday in your own villa", text: "Stay whenever you wish. The villa is yours." },
+  { title: "Lease it back", text: "Ask us for the current lease-back terms." },
+  { title: "Rent it out", text: "If you choose, Bilva lists your villa for holiday rentals while you are away." },
+  { title: "Let Bilva manage it", text: "Bilva looks after bookings, check-in, housekeeping and guest support." },
+  { title: "Get monthly income", text: "Income depends on bookings, season and costs. It is not guaranteed." },
 ];
-
-export const ownershipNote =
-  "Income from renting depends on bookings, season and costs. It is not guaranteed.";
 
 /** [sheet] Listed as resort amenities on the price sheet. */
 export const resortAmenities = [
