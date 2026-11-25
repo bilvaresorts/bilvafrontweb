@@ -6,6 +6,11 @@
  * Balitecture's villas, not Bilva's, so wherever one is shown as a picture
  * (rather than a darkened background) it carries the "Illustrative image" label.
  *
+ * Resolution: each file is kept at the size Balitecture publishes it, which is
+ * between 1,600 and 2,880 px wide. Nothing larger exists on their site. Heroes
+ * and backgrounds use the 2,400 to 2,880 px photographs; the 1,600 px images
+ * are used only where a picture is shown at half width or less.
+ *
  * To replace one, drop a new file in /public/images and change its `src` here.
  */
 
@@ -23,7 +28,7 @@ export const ref = {
   },
   intro: {
     src: at("intro"),
-    alt: "White villa with arched glass doors beside a turquoise pool and tropical planting",
+    alt: "Open-air dining under a thatched roof, beside a pool and an arched timber door",
   },
   livingDining: {
     src: at("living-dining"),
@@ -43,14 +48,6 @@ export const ref = {
     src: at("hero-white-villa"),
     alt: "White two-storey villa with black-framed windows around a turquoise pool",
   },
-  heroOpenLiving: {
-    src: at("hero-open-living"),
-    alt: "Open living room under a planted roof, facing a private pool",
-  },
-  heroDuskVilla: {
-    src: at("hero-dusk-villa"),
-    alt: "Villa at dusk with warm interior lights and a small pool",
-  },
   heroResortPool: {
     src: at("hero-resort-pool"),
     alt: "Long pool at dusk beside a villa with a timber-slatted roof",
@@ -63,27 +60,22 @@ export const ref = {
     src: at("hero-white-courtyard"),
     alt: "White villa with black-framed windows and a small pool, framed by banana leaves",
   },
-  heroCourtyardPool: {
-    src: at("hero-courtyard-pool"),
-    alt: "Courtyard pool beside a dark stone wall and tropical planting",
-  },
   heroGreyVilla: {
     src: at("hero-grey-villa"),
     alt: "Two-storey grey villa with planted terraces, seen across its pool",
   },
-  heroGreenVilla: {
-    src: at("hero-green-villa"),
-    alt: "Villa with greenery hanging from its roof line, behind a blue pool",
+  heroThatchPool: {
+    src: at("hero-thatch-pool"),
+    alt: "Curved pool between cream stone walls and a thatched pavilion, under a blue sky",
   },
-  heroGardenVilla: {
-    src: at("hero-garden-villa"),
-    alt: "Two-storey villa seen from its garden, with planting along the balcony",
+  heroArchedPool: {
+    src: at("hero-arched-pool"),
+    alt: "Villa at dusk with an arched window and two loungers beside a lit pool",
   },
-  heroJungleVilla: {
-    src: at("hero-jungle-villa"),
-    alt: "Glass-fronted villa with a steep roof and a pool, set among palms",
+  heroTimberPool: {
+    src: at("hero-timber-pool"),
+    alt: "Single-storey villa with a timber-lined roof and glass doors along a turquoise pool",
   },
-
   heroDuskLiving: {
     src: at("hero-dusk-living"),
     alt: "Pool at dusk beside an open, lit living room",
@@ -102,17 +94,13 @@ export const ref = {
   },
 
   /*
-   * Stand-ins for things still to come: the bathroom render, the 360-degree
-   * tour, the floor plan and the site layout. The last two are photographs on
-   * purpose. Another developer's drawing is never shown as Bilva's plan.
+   * Stand-ins for things still to come: the bathroom render, the floor plan and
+   * the site layout. The last two are photographs on purpose. Another
+   * developer's drawing is never shown as Bilva's plan.
    */
   bathroom: {
     src: at("bathroom"),
     alt: "Bathroom with a double vanity, two lit mirrors and a stone-walled shower",
-  },
-  tourLiving: {
-    src: at("tour-open-living"),
-    alt: "Open living room and kitchen bar under a timber ceiling, looking out to the garden",
   },
   planLiving: {
     src: at("plan-living-kitchen"),
@@ -123,7 +111,7 @@ export const ref = {
     alt: "A villa development seen from the air, among fields and trees",
   },
 
-  /* Model villa and investment */
+  /* Rooms and smaller pictures */
   exterior: {
     src: at("exterior"),
     alt: "Villa exterior with planted roof edges, seen across the pool",
@@ -142,17 +130,13 @@ export const ref = {
   },
 
   /* Darkened backgrounds behind the enquiry bands. Decorative, so no alt text is read out. */
-  bandNightPool: { src: at("band-night-pool"), alt: "" },
   bandDuskLoungers: { src: at("band-dusk-loungers"), alt: "" },
   bandBlueDusk: { src: at("band-blue-dusk"), alt: "" },
-  bandPavilionPool: { src: at("band-pavilion-pool"), alt: "" },
-  bandGardenDusk: { src: at("band-garden-dusk"), alt: "" },
   bandVillaDusk: { src: at("band-villa-dusk"), alt: "" },
   bandTerraceDusk: { src: at("band-terrace-dusk"), alt: "" },
-  bandNightGarden: { src: at("band-night-garden"), alt: "" },
-  bandJungleVilla: { src: at("band-jungle-villa"), alt: "" },
+  bandDuskPool: { src: at("band-dusk-pool"), alt: "" },
   bandRooftop: { src: at("band-rooftop"), alt: "" },
-  bandPoolBedroom: { src: at("band-pool-bedroom"), alt: "" },
-  bandLongPool: { src: at("band-long-pool"), alt: "" },
-  bandTerraces: { src: at("band-terraces"), alt: "" },
+  bandPoolPlants: { src: at("band-pool-plants"), alt: "" },
+  bandPoolStone: { src: at("band-pool-stone"), alt: "" },
+  bandNightCourtyard: { src: at("band-night-courtyard"), alt: "" },
 } satisfies Record<string, RefImage>;

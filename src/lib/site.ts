@@ -55,10 +55,11 @@ export type NavItem = {
 };
 
 /**
- * Six items. The logo goes Home; About, Testimonials, FAQ and Contact are in the
- * footer. Villas and Invest are one page each, so there are no dropdowns.
+ * Seven items. About, Testimonials, FAQ and Contact are in the footer. Villas
+ * and Invest are one page each, so there are no dropdowns.
  */
 export const nav: NavItem[] = [
+  { label: "Home", href: "/" },
   { label: "Villas", href: "/villas" },
   { label: "Hotel", href: "/hotel" },
   { label: "Booking", href: "/booking" },

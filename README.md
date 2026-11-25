@@ -38,10 +38,13 @@ Other commands: `npm run build` for a production build, `npm run lint` for ESLin
 
 ## Structure
 
-The menu has six items: Villas, Hotel, Booking, Invest, Location Highlights and Gallery.
-The logo goes Home. About, Testimonials, FAQ and Contact are in the footer. The Home
-page leads with the three things a visitor can do: buy a villa, stay at the hotel, or
-rent a villa.
+The menu has seven items: Home, Villas, Hotel, Booking, Invest, Location Highlights and
+Gallery. About, Testimonials, FAQ and Contact are in the footer.
+
+The Home hero (`src/components/home/HomeHero.tsx`) carries one headline and three
+panels: Villas, Hotel and Booking. Each panel links to its page, and pointing at one
+fades the hero photograph to that offer. The section below repeats the three with
+pictures and a line of detail.
 
 Each topic is told in full on one page. Other pages link to it and do not repeat it.
 

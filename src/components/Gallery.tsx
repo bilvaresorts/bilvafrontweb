@@ -189,7 +189,7 @@ function Lightbox({
 
       <div className="relative min-h-0 flex-1 px-4 md:px-24">
         <div key={image.src} className="lightbox-in relative h-full w-full">
-          <Image src={image.src} alt={image.alt} fill sizes="100vw" className="object-contain" />
+          <Image src={image.src} alt={image.alt} fill sizes="100vw" quality={90} className="object-contain" />
         </div>
         {total > 1 ? (
           <>

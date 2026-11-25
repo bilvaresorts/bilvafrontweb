@@ -36,6 +36,7 @@ export function Photo({
         alt={alt}
         fill
         sizes={sizes}
+        quality={90}
         preload={preload}
         className={cn(
           "object-cover transition-transform duration-[1400ms] ease-out-soft group-hover:scale-[1.05]",

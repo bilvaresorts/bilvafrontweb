@@ -56,7 +56,7 @@ export default function LocationPage() {
         eyebrow="Location highlights"
         light="Between two rivers"
         bold="and the Arabian Sea."
-        image={{ ...ref.heroJungleVilla, note: ILLUSTRATIVE }}
+        image={{ ...ref.heroTimberPool, note: ILLUSTRATIVE }}
         summary={`${address.line1}, ${address.line2}, ${address.region} ${address.postalCode}. Inland, north of Gokarna town, about 10 km from National Highway 66.`}
       >
         <ButtonLink href="#map" variant="solid-light">
@@ -141,7 +141,7 @@ export default function LocationPage() {
         light="Come and see"
         bold="the location."
         text="Tell us when you would like to visit and our team will confirm a time and send directions to the site."
-        image={{ src: ref.bandPoolBedroom.src }}
+        image={{ src: ref.bandPoolPlants.src }}
         primary={{ label: "Request a site visit", type: "site-visit", message: "I would like to visit the site." }}
         secondary={{ label: "See the villas", href: "/villas" }}
       />

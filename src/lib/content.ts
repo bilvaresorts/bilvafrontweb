@@ -28,14 +28,6 @@ export const price = {
   ],
 };
 
-/** [brief] + [sheet] */
-export const heroFacts = [
-  { value: "40", label: "Private villas" },
-  { value: "2", label: "Bedrooms in every villa" },
-  { value: "Private pool", label: "With every villa" },
-  { value: "2,000 sq ft", label: "Built-up area" },
-];
-
 /** [sheet] */
 export const inclusions = [
   {

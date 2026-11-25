@@ -132,7 +132,7 @@ export default function AboutPage() {
         light="Talk to"
         bold="Bilva Resorts."
         text="Tell us what you would like to know and our team will come back with what you need to decide."
-        image={{ src: ref.bandJungleVilla.src }}
+        image={{ src: ref.bandDuskPool.src }}
         primary={{ label: "Enquire now", type: "general" }}
         secondary={{ label: "Read common questions", href: "/faq" }}
       />

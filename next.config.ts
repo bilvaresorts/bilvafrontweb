@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  // 90 is used for the large photographs (heroes and pictures); 75 for the darkened backgrounds.
+  images: { qualities: [75, 90] },
   // Villas and Invest are one page each. Their old sub-pages lead to the matching part of that page.
   async redirects() {
     return [

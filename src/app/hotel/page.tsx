@@ -113,7 +113,7 @@ export default function HotelPage() {
         text="Leave your details and we will contact you when the hotel opens for reservations."
         points={["No booking or payment is taken now", "We contact you when reservations open", "Tell us when you hope to travel"]}
         defaultType="hotel"
-        image={{ src: ref.bandTerraces.src }}
+        image={{ src: ref.bandNightCourtyard.src }}
         source="hotel page"
         submitLabel="Register interest"
         extras={[

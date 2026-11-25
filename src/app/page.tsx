@@ -1,5 +1,6 @@
 import { Faq, FinalEnquiry, GalleryPreview, Identity, LocationPreview, RentalIncome } from "@/components/home/bottom";
-import { Hero, InsideVilla, Offers, VillaOffer } from "@/components/home/top";
+import { Hero } from "@/components/home/HomeHero";
+import { InsideVilla, Offers, VillaOffer } from "@/components/home/top";
 import { faqs } from "@/lib/content";
 import { geo, mapsUrl, site } from "@/lib/site";
 

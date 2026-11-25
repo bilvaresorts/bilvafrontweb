@@ -63,7 +63,7 @@ export default function FaqPage() {
         light="Still have"
         bold="a question?"
         text="Write to us and a member of our team will answer."
-        image={{ src: ref.bandLongPool.src }}
+        image={{ src: ref.bandPoolStone.src }}
         primary={{ label: "Ask a question", type: "general" }}
         secondary={{ label: "See the villas", href: "/villas" }}
       />

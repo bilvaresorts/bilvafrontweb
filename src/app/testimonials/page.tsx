@@ -91,7 +91,7 @@ export default function TestimonialsPage() {
         eyebrow="Testimonials"
         light="In their"
         bold="own words."
-        image={{ ...ref.heroGardenVilla, note: ILLUSTRATIVE }}
+        image={{ ...ref.heroArchedPool, note: ILLUSTRATIVE }}
         summary="What owners and guests say about Bilva Resorts. We publish only genuine reviews, with the reviewer's permission."
       >
         <EnquireLink prefill={{ type: "site-visit", message: "I would like to visit the site." }}>

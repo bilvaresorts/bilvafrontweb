@@ -53,6 +53,7 @@ export function PageHero({
               alt={image.alt}
               fill
               sizes="100vw"
+              quality={90}
               preload
               className={cn("hero-media object-cover", image.position ?? "object-center")}
             />
